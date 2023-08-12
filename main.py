@@ -9,13 +9,22 @@ class Player:
     def __repr__(self):
         return f'Player | {self.name}'
 
-    def get_location(self):
+    def check_location(self):
         print(f'You are in the {self.location.name}.')
+
+    def check_inventory(self):
+        if self.inventory:
+            print('You have:')
+            for item in self.inventory:
+                print(item.name)
+        else:
+            print('You have nothing in your inventory.')
+
 
     def move(self, destination):
         print('Moving...')
         self.location = destination
-        self.get_location()
+        self.check_location()
 
 # print('Welcome, adventurer!')
 # name = input('What is your name? ')
@@ -23,7 +32,6 @@ class Player:
 # print(f'Player {player.name} created.')
 # player.get_location()
 
-player = Player('ababu', entrance)
-player.move(foyer)
-candle = Item('Candle', 'a candle')
-print(candle.description)
+key = Item('key', 'A metal key', 'in your inventory')
+player = Player('ababu', location=entrance, inventory=[key])
+player.check_inventory()
