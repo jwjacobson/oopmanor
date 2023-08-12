@@ -1,10 +1,4 @@
-class Room:
-    def __init__(self, name, description):
-        self.name = name
-        self.description = description
-    
-    def __repr__(self):
-        return f'Room {self.name}'
+from rooms import *
 
 class Player:
     def __init__(self, name, location: Room):
@@ -17,9 +11,12 @@ class Player:
     def get_location(self):
         print(f'You are in the {self.location.name}.')
 
-entrance = Room('Entrance', 'The entrance to OOP Manor.')
-print('Welcome, adventurer!')
-name = input('What is your name? ')
-player = Player(name, entrance)
-print(f'Player {player.name} created.')
-player.get_location()
+    def move(self):
+        pass
+
+# print('Welcome, adventurer!')
+# name = input('What is your name? ')
+# player = Player(name, entrance)
+# print(f'Player {player.name} created.')
+# player.get_location()
+print(rooms)
