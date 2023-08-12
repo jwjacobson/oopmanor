@@ -14,11 +14,12 @@ class Player:
     def __repr__(self):
         return f'Player {self.name}'
 
+    def get_location(self):
+        print(f'You are in the {self.location.name}.')
 
 entrance = Room('Entrance', 'The entrance to OOP Manor.')
 print('Welcome, adventurer!')
 name = input('What is your name? ')
 player = Player(name, entrance)
 print(f'Player {player.name} created.')
-print(f'{player.name} is in the {player.location.name}.')
-print(player.location.description)
+player.get_location()
