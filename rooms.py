@@ -1,10 +1,12 @@
+from objects import *
+
 class Room:
     def __init__(self, name, description):
         self.name = name
         self.description = description
     
     def __repr__(self):
-        return f'Room {self.name}'
+        return f'Room | {self.name}'
 
 rooms = []
 

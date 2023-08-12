@@ -1,12 +1,13 @@
 from rooms import *
 
 class Player:
-    def __init__(self, name, location: Room):
+    def __init__(self, name, location: Room, inventory=[]):
         self.name = name
         self.location = location
+        self.inventory = inventory
     
     def __repr__(self):
-        return f'Player {self.name}'
+        return f'Player | {self.name}'
 
     def get_location(self):
         print(f'You are in the {self.location.name}.')
@@ -24,3 +25,5 @@ class Player:
 
 player = Player('ababu', entrance)
 player.move(foyer)
+candle = Object('Candle', 'a candle')
+print(candle.description)
