@@ -11,12 +11,16 @@ class Player:
     def get_location(self):
         print(f'You are in the {self.location.name}.')
 
-    def move(self):
-        pass
+    def move(self, destination):
+        print('Moving...')
+        self.location = destination
+        self.get_location()
 
 # print('Welcome, adventurer!')
 # name = input('What is your name? ')
 # player = Player(name, entrance)
 # print(f'Player {player.name} created.')
 # player.get_location()
-print(rooms)
+
+player = Player('ababu', entrance)
+player.move(foyer)
