@@ -25,5 +25,5 @@ class Player:
 
 player = Player('ababu', entrance)
 player.move(foyer)
-candle = Object('Candle', 'a candle')
+candle = Item('Candle', 'a candle')
 print(candle.description)

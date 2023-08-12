@@ -1,4 +1,4 @@
-from objects import *
+from items import *
 
 class Room:
     def __init__(self, name, description):
