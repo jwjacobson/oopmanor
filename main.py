@@ -11,6 +11,8 @@ class Player:
 
     def check_location(self):
         print(f'You are in the {self.location.name}.')
+        for item in self.location.items:
+            print(f'You see a {item.name} {item.position}.')
 
     def check_inventory(self):
         if self.inventory:
@@ -20,6 +22,15 @@ class Player:
         else:
             print('You have nothing in your inventory.')
 
+    def take_item(self, item):
+        # self.item = item
+        if self.location == item.location:
+            self.inventory.append(item)
+            item.position = self.inventory
+            item.location = self.inventory
+            self.location.remove_item(item)
+        else:
+            print(f"You don't see a {item}.")
 
     def move(self, destination):
         print('Moving...')
@@ -32,6 +43,8 @@ class Player:
 # print(f'Player {player.name} created.')
 # player.get_location()
 
-key = Item('key', 'A metal key', 'in your inventory')
-player = Player('ababu', location=entrance, inventory=[key])
+player = Player('ababu', location=entrance)
+player.check_location()
+player.take_item(key)
 player.check_inventory()
+player.check_location()
