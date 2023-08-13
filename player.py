@@ -23,14 +23,23 @@ class Player:
             print('You have nothing in your inventory.')
 
     def take_item(self, item):
-        # self.item = item
         if self.location == item.location:
+            print(f'You take the {item.name}.')
             self.inventory.append(item)
             item.position = self.inventory
             item.location = self.inventory
             self.location.remove_item(item)
         else:
-            print(f"You don't see a {item}.")
+            print("You don't see one of those!")
+
+    def drop_item(self, item):
+        if item in self.inventory:
+            item.location = self.location
+            item.position = 'on the floor'
+            self.inventory.remove(item)
+            print(f'You drop the {item.name}.')
+        else:
+            print(f"You don't have one of those!")
 
     def move(self, destination):
         print('Moving...')
