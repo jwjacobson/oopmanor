@@ -2,9 +2,10 @@ from items import *
 from doors import *
 
 class Room:
-    def __init__(self, name, description, doors=[], items=[]):
+    def __init__(self, name, full_description, brief_description, doors=[], items=[]):
         self.name = name
-        self.description = description
+        self.full_description = full_description
+        self.brief_description = brief_description
         self.doors = doors
         self.items = items
     
@@ -19,6 +20,9 @@ class Room:
         for door in all_doors[self.name]:
             self.doors.append(Door(*all_doors[self.name][door][0], **all_doors[self.name][door][1]))
         print(self.doors)
+
+    # def describe_doors(self):
+
 
 rooms = []
 
