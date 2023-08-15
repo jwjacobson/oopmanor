@@ -22,7 +22,10 @@ class Room:
 
     def describe_doors(self):
         for door in self.doors:
-            print(f'There is a door to the {door.direction}.')
+            if door.passed:
+                print(f'There is a door to the {door.direction}, leading to the {door.leads_to.name}.')
+            else:
+                print(f'There is a door to the {door.direction}.')
 
 rooms = []
 
