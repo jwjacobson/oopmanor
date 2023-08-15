@@ -1,5 +1,13 @@
 from player import *
 
+"""
+speculative map generation:
+generate rooms
+generate doors
+generate items
+"""
+
+
 # print('Welcome, adventurer!')
 # name = input('What is your name? ')
 # player = Player(name, entrance)
