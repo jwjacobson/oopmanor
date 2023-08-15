@@ -19,17 +19,19 @@ class Room:
     def populate_doors(self):
         for door in all_doors[self.name]:
             self.doors.append(Door(*all_doors[self.name][door][0], **all_doors[self.name][door][1]))
-        print(self.doors)
 
-    # def describe_doors(self):
-
+    def describe_doors(self):
+        for door in self.doors:
+            print(f'There is a door to the {door.direction}.')
 
 rooms = []
 
-entrance = Room('Entrance', 'The entrance to OOP Manor.')
+entrance = Room('Entrance', 'full', 'The entrance to OOP Manor.')
 rooms.append(entrance)
-foyer = Room('Foyer', 'The foyer of OOP Manor.')
+foyer = Room('Foyer', 'full', 'The foyer of OOP Manor.')
 rooms.append(foyer)
+outside = Room('Outside', 'full', 'Outside of OOP Manor.')
+rooms.append(outside)
 
 key = Item('key', 'A metal key', location=entrance, position='on the ground')
 entrance.items.append(key)
@@ -38,7 +40,7 @@ all_doors = {
 'Entrance':
 {
     '1': [['north', foyer], {'locked': True}],
-    # '2': [['south', 'out',], {'passed': True}]
+    '2': [['south', outside,], {'passed': True}]
 }
 }
 
@@ -47,3 +49,4 @@ all_doors = {
 # print(door.locked)
 
 entrance.populate_doors()
+entrance.describe_doors()
