@@ -4,7 +4,7 @@ from doors import *
 class Room:
     id_counter = 1
 
-    def __init__(self, name, full_description, brief_description, doors=[], items=[]):
+    def __init__(self, name, full_description, brief_description, doors=[], items=[], visited=False):
         self.id = Room.id_counter
         Room.id_counter += 1
         self.name = name
@@ -12,7 +12,8 @@ class Room:
         self.brief_description = brief_description
         self.doors = doors
         self.items = items
-    
+
+
     def __repr__(self):
         return f'Room {self.id} | {self.name}'
 
@@ -33,11 +34,11 @@ class Room:
 
 rooms = []
 
-entrance = Room('Entrance', 'full', 'The entrance to OOP Manor.')
+entrance = Room('Entrance', 'Full description tbd', 'The entrance to OOP Manor.')
 rooms.append(entrance)
-foyer = Room('Foyer', 'full', 'The foyer of OOP Manor.')
+foyer = Room('Foyer', 'Full description tbd', 'The foyer of OOP Manor.')
 rooms.append(foyer)
-outside = Room('Outside', 'full', 'Outside of OOP Manor.')
+outside = Room('Outside', 'Full description tbd', 'Outside of OOP Manor.')
 rooms.append(outside)
 
 key = Item('key', 'A metal key', location=entrance, position='on the ground')

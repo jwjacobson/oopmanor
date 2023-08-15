@@ -11,6 +11,7 @@ class Player:
 
     def check_location(self):
         print(f'You are in the {self.location.name}.')
+        self.location.describe_doors()
         for item in self.location.items:
             print(f'You see a {item.name} {item.position}.')
 
