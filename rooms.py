@@ -2,7 +2,11 @@ from items import *
 from doors import *
 
 class Room:
+    id_counter = 1
+
     def __init__(self, name, full_description, brief_description, doors=[], items=[]):
+        self.id = Room.id_counter
+        Room.id_counter += 1
         self.name = name
         self.full_description = full_description
         self.brief_description = brief_description
@@ -10,7 +14,7 @@ class Room:
         self.items = items
     
     def __repr__(self):
-        return f'Room | {self.name}'
+        return f'Room {self.id} | {self.name}'
 
     def remove_item(self, item):
         """Only called when the player takes an item"""
@@ -53,3 +57,4 @@ all_doors = {
 
 entrance.populate_doors()
 entrance.describe_doors()
+print(rooms)
