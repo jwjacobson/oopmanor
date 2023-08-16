@@ -9,8 +9,9 @@ class Player:
     def __repr__(self):
         return f'Player | {self.name}'
 
-    def check_location(self):
-        print(f'You are in the {self.location.name}.')
+    def look_around(self):
+        print(f'\nYou look around the {self.location.name}.')
+        print(self.location.full_description)
         self.location.describe_doors()
         for item in self.location.items:
             print(f'You see a {item.name} {item.position}.')
@@ -45,10 +46,9 @@ class Player:
 
     def arrive(self):
         print(f'\nYou arrive in the {self.location.name}.')
-        if self.location.visited:
-            print(self.location.brief_description)
-        else:
+        if self.location.visited == False:
             print(self.location.full_description)
+            self.location.visited = True
         self.location.describe_doors()
         for item in self.location.items:
             print(f'You see a {item.name} {item.position}.')
