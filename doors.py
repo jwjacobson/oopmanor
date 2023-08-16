@@ -11,7 +11,7 @@ class Door:
         self.passed = kwargs.get('passed', False)
 
     def __repr__(self):
-        return f'Door | {self.direction} to {self.leads_to.name}'
+        return f'Door {self.id} | {self.direction} to {self.leads_to.name}'
 
 # entrance = Room('Entrance', 'The entrance to OOP Manor.')
 # test_door = Door('n', leads_to=entrance)
