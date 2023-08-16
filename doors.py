@@ -1,5 +1,9 @@
 class Door:
+    id_counter = 1
+
     def __init__(self, direction, leads_to, **kwargs):
+        self.id = Door.id_counter
+        Door.id_counter += 1
         self.direction = direction
         self.leads_to = leads_to
         self.locked = kwargs.get('locked', False)
@@ -21,3 +25,4 @@ class Door:
 # }
 # }
 # print(all_doors['Entrance'][0])
+

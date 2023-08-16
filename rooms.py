@@ -12,7 +12,7 @@ class Room:
         self.brief_description = brief_description
         self.doors = doors
         self.items = items
-
+        self.visited = visited
 
     def __repr__(self):
         return f'Room {self.id} | {self.name}'
@@ -22,8 +22,13 @@ class Room:
         self.items.remove(item)
 
     def populate_doors(self):
+        print(f'Populating doors for {self}...')
         for door in all_doors[self.name]:
             self.doors.append(Door(*all_doors[self.name][door][0], **all_doors[self.name][door][1]))
+            print(f'Door {door} created.')
+        print(f'Population complete. {self} contains the following doors:')
+        for door in self.doors:
+            print(door)
 
     def describe_doors(self):
         for door in self.doors:
@@ -36,8 +41,10 @@ rooms = []
 
 entrance = Room('Entrance', 'Full description tbd', 'The entrance to OOP Manor.')
 rooms.append(entrance)
+
 foyer = Room('Foyer', 'Full description tbd', 'The foyer of OOP Manor.')
 rooms.append(foyer)
+
 outside = Room('Outside', 'Full description tbd', 'Outside of OOP Manor.')
 rooms.append(outside)
 
@@ -49,6 +56,10 @@ all_doors = {
 {
     '1': [['north', foyer], {'locked': True}],
     '2': [['south', outside,], {'passed': True}]
+},
+'Foyer':
+{
+    '1': [['south', entrance], {'locked': True}],
 }
 }
 
@@ -57,5 +68,6 @@ all_doors = {
 # print(door.locked)
 
 entrance.populate_doors()
-entrance.describe_doors()
-print(rooms)
+foyer.populate_doors()
+# entrance.describe_doors()
+# print(rooms)
