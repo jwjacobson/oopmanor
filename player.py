@@ -44,6 +44,9 @@ class Player:
         else:
             print(f"You don't have one of those!")
 
+    def pass_door(self, door):
+        door.passed = True
+    
     def arrive(self):
         print(f'\nYou arrive in the {self.location.name}.')
         if self.location.visited == False:
