@@ -6,3 +6,24 @@ hall of infinite easts (under construction)
 alf and meg, infinite contractors
 reasonable hourly rates!
 infinite satisfaction guaranteed!
+
+locked safe hidden behind painting
+solution is rot13 of the title of the painting
+hint for rot13 hidden in other room scrawled on a piece of scrap paper
+safe contains nothing of value 
+
+various events/objects/rooms labeled as secret, increase players' secret counter by 1
+
+
+Hint ghost hints:
+'They say that by definition, an Object is that which appears before a Subject.'
+'They say that some kind of code is essential to finding the Object.'
+'A wise person told me that an Object can only exist if posited by a Subject.'
+'They say there is at least one Room in the Manor that you can never visit.'
+'They say that certain Rooms are very dangerous.'
+'They say you need to light a candle to talk to the Hint Ghost... but you already know that, don't you?'
+'They say that certain secrets are hidden outside the Manor.'
+'Some say the Object is a myth; others that even if it exists, it is unknowable.'
+'They say not everything the Hint Ghost tells you is true... but you don't believe them, do you?'
+'They say Alf and Meg surpass all other contractors in ability, knowhow, and disposition.'
+'I saw the Object once, but when I tried to pick it up, my hands went right through it. When I went back to where it was, it was gone!'

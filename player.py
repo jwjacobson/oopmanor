@@ -1,12 +1,14 @@
 from rooms import *
 
 class Player:
-    def __init__(self, name, location: Room, inventory=None):
+    def __init__(self, name, location: Room, inventory=None, secrets=0, prev_location=outside):
         if inventory is None:
             inventory = []
         self.name = name
         self.location = location
         self.inventory = inventory
+        self.secrets = 0
+        self.prev_location = prev_location
     
     def __repr__(self):
         return f'Player | {self.name}'
@@ -51,6 +53,9 @@ class Player:
     
     def arrive(self):
         print(f'\nYou arrive in the {self.location.name}.')
+        for door in self.location.doors:
+            if door.leads_to == self.prev_location and door.passed == False:
+                self.pass_door(door)
         if self.location.visited == False:
             print(self.location.full_description)
             self.location.visited = True
@@ -60,6 +65,7 @@ class Player:
 
     def move(self, destination):
         print('Moving...')
+        self.prev_location = self.location
         self.location = destination
         self.arrive()
     
