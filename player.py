@@ -53,7 +53,8 @@ class Player:
     
     def arrive(self):
         print(f'\nYou arrive in the {self.location.name}.')
-        for door in self.location.doors:
+        for door in self.location.doors:        # I know it's inelegant to iterate through all the doors but there's only a few
+                                                # and the alternative is adding another door attribute or doing weird stuff with    directions
             if door.leads_to == self.prev_location and door.passed == False:
                 self.pass_door(door)
         if self.location.visited == False:
@@ -64,6 +65,10 @@ class Player:
             print(f'You see a {item.name} {item.position}.')
 
     def move(self, destination):
+        for door in self.location.doors:
+            if door.leads_to == destination and door.locked:
+                print(f'The door to the {destination.name} is locked!')
+                return
         print('Moving...')
         self.prev_location = self.location
         self.location = destination
