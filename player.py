@@ -1,7 +1,9 @@
 from rooms import *
 
 class Player:
-    def __init__(self, name, location: Room, inventory=[]):
+    def __init__(self, name, location: Room, inventory=None):
+        if inventory is None:
+            inventory = []
         self.name = name
         self.location = location
         self.inventory = inventory
