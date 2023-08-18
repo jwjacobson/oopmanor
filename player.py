@@ -91,6 +91,8 @@ class Player:
             door_to_unlock = locked_doors[0]
             door_to_unlock.unlock()
             print(f'You unlock the door to the {door_to_unlock.direction}.')
+            self.inventory.remove(key)
+            key.vanish()
         elif len(locked_doors) > 1:
             print('Which door do you want to unlock?')
         else:
