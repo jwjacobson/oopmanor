@@ -17,5 +17,5 @@ At present AOOPM requires only **Python 3**, with no additional packages or depe
 TBD once I'm further along
 
 ### License
-Adventures in OOP Manor is [free software](https://www.fsf.org/about/what-is-free-software), released under version 3.0 of the GPL. Everyone has the right to use, modify, and distribute Adventures in OOP MAnor subject to the [stipulations](https://github.com/jwjacobson/oopmanor/blob/main/License) of that license.
+Adventures in OOP Manor is [free software](https://www.fsf.org/about/what-is-free-software), released under version 3.0 of the GPL. Everyone has the right to use, modify, and distribute Adventures in OOP Manor subject to the [stipulations](https://github.com/jwjacobson/oopmanor/blob/main/License) of that license.
 
