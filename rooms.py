@@ -48,7 +48,7 @@ foyer = Room('Foyer', 'Full description tbd', 'The foyer of OOP Manor.')
 
 outside = Room('Outside', 'Full description tbd', 'Outside of OOP Manor.')
 
-key = Item('key', 'A metal key', location=entrance, position='on the ground')
+key = Key('key', 'A metal key', location=entrance, position='on the ground')
 entrance.items.append(key)
 
 all_doors = {

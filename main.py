@@ -16,7 +16,10 @@ generate items
 
 player = Player('ababu', location=entrance)
 player.arrive()
-player.move(foyer)
+player.take_item(key)
+player.check_inventory()
+print(player.inventory[0])
+# player.move(foyer)
 # player.look_around()
 # player.move(entrance)
 # player.take_item(key)
