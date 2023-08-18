@@ -37,7 +37,9 @@ class Room:
 
     def describe_doors(self):
         for door in self.doors:
-            if door.passed:
+            if door.hidden:
+                continue
+            elif door.passed:
                 print(f'There is a door to the {door.direction}, leading to the {door.leads_to.name}.')
             else:
                 print(f'There is a door to the {door.direction}.')

@@ -13,6 +13,10 @@ class Item:
     def __repr__(self):
         return f'Item {self.id} | {self.name}'
 
+    def vanish(self):
+        print(f'The {self.name} crumbles to dust!')
+        del self
+
 # class Key(Item):
 #     def __init__(self, name, description, location, position, hidden=False):
 #         self.id = Item.id_counter
@@ -21,8 +25,3 @@ class Item:
 #         self.location = location
 #         self.position = position
 #         self.hidden = hidden
-
-    # def unlock(self, door):
-    #     if door.locked:
-    #         door.locked = False
-    #         print('You unlock the door.')
