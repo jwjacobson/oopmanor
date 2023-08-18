@@ -13,6 +13,9 @@ class Door:
     def __repr__(self):
         return f'Door {self.id} | {self.direction} to {self.leads_to.name}'
 
+    def unlock(self):
+        self.locked = False
+
 # entrance = Room('Entrance', 'The entrance to OOP Manor.')
 # test_door = Door('n', leads_to=entrance)
 # print(test_door)

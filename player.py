@@ -74,4 +74,25 @@ class Player:
         self.location = destination
         self.arrive()
     
-   
+    def unlock_door(self):
+        if key not in self.inventory:
+            print('You need a key to do that.')
+            return
+        counter = 0
+        locked_doors = []
+        for door in self.location.doors:
+            if door.hidden:
+                continue
+            elif door.locked:
+                locked_doors.append(door)
+                counter += 1
+        if counter == 0:
+            print('You see no doors to unlock.')
+        elif counter > 1:
+            print('Which door do you want to unlock?')
+        else:
+            door_to_unlock = locked_doors[0]
+            door_to_unlock.unlock()
+            print(f'You unlock the door to the {door_to_unlock.direction}.')
+        
+
