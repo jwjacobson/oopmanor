@@ -19,5 +19,5 @@ At present **Adventures in OOP Manor** requires only Python 3, with no additiona
 TBD once I'm further along
 
 ### License
-Tunetoot is [free software](https://www.fsf.org/about/what-is-free-software), released under version 3.0 of the GPL. Everyone has the right to use, modify, and distribute Tunetoot subject to the [stipulations](https://github.com/jwjacobson/tunetoot/blob/main/License.md) of that license.
+Adventures in OOP MAnor is [free software](https://www.fsf.org/about/what-is-free-software), released under version 3.0 of the GPL. Everyone has the right to use, modify, and distribute Tunetoot subject to the [stipulations](https://github.com/jwjacobson/tunetoot/blob/main/License.md) of that license.
 
