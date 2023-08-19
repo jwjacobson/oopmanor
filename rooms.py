@@ -53,6 +53,8 @@ main_hall = Room('Main Hall', 'Full description tbd', 'The foyer of OOP Manor.')
 outside = Room('Outside', 'Full description tbd', 'Outside of OOP Manor.')
 laboratory = Room('Laboratory', 'description tbd', 'A disused laboratory.')
 hall_of_easts = Room('Hall of Infinite Easts', 'description tbd', 'An infinite hall in one direction.')
+hallway = Room('Hallway', 'description tbd', 'An L-shaped hallway.')
+library = Room('Library', 'description tbd', 'The library of OOP manor.')
 
 #Generating items one by one now, later the info will be stored in a data structure
 key = Item('key', 'A metal key', location=foyer, position='on the floor')
@@ -72,16 +74,26 @@ all_doors = {
 {
     '1': [['south', foyer], {'locked': False}],
     '2': [['west', laboratory], {'locked': False}],
-    '3': [['east', hall_of_easts], {'locked': True}]
+    '3': [['east', hall_of_easts], {'locked': True}],
+    '4': [['north', hallway], {'locked': False}]
 },
 'Laboratory':
 {
-    '1': [['east', main_hall], {'passed': True}],
+    '1': [['east', main_hall], {'passed': True}]
 },
 'Hall of Infinite Easts':
 {
     '1': [['west', main_hall], {'passed': True}],
     '2': [['east', hall_of_easts], {'locked': False}]
+},
+'Hallway':
+{
+    '1': [['south', main_hall], {'passed': True}],
+    '2': [['west', library], {'locked': False}]
+},
+'Library':
+{
+    '1': [['east', hallway], {'passed': True}]
 }
 }
 # print(all_doors['Entrance']['1'][0])
@@ -92,5 +104,7 @@ foyer.populate_doors()
 main_hall.populate_doors()
 laboratory.populate_doors()
 hall_of_easts.populate_doors()
+hallway.populate_doors()
+library.populate_doors()
 # entrance.describe_doors()
 # print(rooms)
