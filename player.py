@@ -73,7 +73,7 @@ class Player:
     def move(self, destination):
         for door in self.location.doors:
             if door.leads_to == destination and door.locked:
-                print(f'The door to the {destination.name} is locked!')
+                print(f'The door to the {door.direction} is locked.')
                 return
         print('Moving...')
         self.prev_location = self.location
