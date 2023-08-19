@@ -33,11 +33,14 @@ class Player:
 
     def take_item(self, item):
         if self.location == item.location:
-            print(f'You take the {item.name}.')
-            self.inventory.append(item)
-            item.position = self.inventory
-            item.location = self.inventory
-            self.location.remove_item(item)
+            if item.takeable:
+                print(f'You take the {item.name}.')
+                self.inventory.append(item)
+                item.position = self.inventory
+                item.location = self.inventory
+                self.location.remove_item(item)
+            else:
+                print(item.failure_message)
         else:
             print("You don't see one of those!")
 
