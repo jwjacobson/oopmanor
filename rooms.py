@@ -44,30 +44,30 @@ class Room:
             else:
                 print(f'There is a door to the {door.direction}.')
 
-entrance = Room('Entrance',
+foyer = Room('Foyer',
 'At long last, you stand before the front door of OOP Manor.',
 'The entrance to OOP Manor.')
 
-foyer = Room('Foyer', 'Full description tbd', 'The foyer of OOP Manor.')
+main_hall = Room('Main Hall', 'Full description tbd', 'The foyer of OOP Manor.')
 
 outside = Room('Outside', 'Full description tbd', 'Outside of OOP Manor.')
 
-key = Item('key', 'A metal key', location=entrance, position='on the ground')
-entrance.items.append(key)
+key = Item('key', 'A metal key', location=foyer, position='on the floor')
+foyer.items.append(key)
 
-safe = Item('safe', 'A large safe', location=foyer, position='on the ground', takeable=False, failure_message='The safe is too heavy to lift.')
-foyer.items.append(safe)
+# safe = Item('safe', 'A large safe', location=foyer, position='on the ground', takeable=False, failure_message='The safe is too heavy to lift.')
+# foyer.items.append(safe)
 
 
 all_doors = {
-'Entrance':
-{
-    '1': [['north', foyer], {'locked': True}],
-    '2': [['south', outside,], {'passed': True}]
-},
 'Foyer':
 {
-    '1': [['south', entrance], {'locked': False}],
+    '1': [['north', main_hall], {'locked': True}],
+    '2': [['south', outside,], {'passed': True}]
+},
+'Main Hall':
+{
+    '1': [['south', foyer], {'locked': False}],
 }
 }
 
@@ -75,7 +75,7 @@ all_doors = {
 # door = Door(*all_doors['Entrance']['1'][0], **all_doors['Entrance']['1'][1])
 # print(door.locked)
 
-entrance.populate_doors()
 foyer.populate_doors()
+main_hall.populate_doors()
 # entrance.describe_doors()
 # print(rooms)
