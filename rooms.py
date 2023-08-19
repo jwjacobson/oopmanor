@@ -57,16 +57,19 @@ hallway = Room('Hallway', 'description tbd', 'An L-shaped hallway.')
 library = Room('Library', 'description tbd', 'The library of OOP manor.')
 
 #Generating items one by one now, later the info will be stored in a data structure
+#foyer
 key = Item('key', 'A metal key', 'description', location=foyer, position='on the floor')
 foyer.items.append(key)
 
+#laboratory
 lighter = Item('lighter', 'A purple Bic lighter', 'description', location=laboratory, position='under a chair')
 laboratory.items.append(lighter)
 paper = Item('piece of scrap paper', 'A scrap of paper with writing on it', 'description', location=laboratory, position='on the table')
 laboratory.items.append(paper)
 
-# safe = Item('safe', 'A large safe', location=foyer, position='on the ground', takeable=False, failure_message='The safe is too heavy to lift.')
-# foyer.items.append(safe)
+#hallway
+safe = Item('safe', 'A large safe with a keyboard', 'description', location=hallway, position='built into the wall', hidden=True, takeable=False, failure_message='The safe is too heavy to lift.')
+hallway.items.append(safe)
 
 
 all_doors = {

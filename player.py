@@ -68,7 +68,10 @@ class Player:
             self.location.visited = True
         self.location.describe_doors()
         for item in self.location.items:
-            print(f'You see a {item.name} {item.position}.')
+            if item.hidden:
+                continue
+            else:
+                print(f'You see a {item.name} {item.position}.')
 
     def move(self, destination):
         for door in self.location.doors:
