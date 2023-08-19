@@ -70,6 +70,8 @@ laboratory.items.append(paper)
 #hallway
 safe = Item('safe', 'A large safe with a keyboard', 'description', location=hallway, position='built into the wall', hidden=True, takeable=False, failure_message='The safe is too heavy to lift.')
 hallway.items.append(safe)
+painting = Item('painting', 'An impressionistic painting', 'description', location=hallway, position='on the wall')
+hallway.items.append(painting)
 
 
 all_doors = {
