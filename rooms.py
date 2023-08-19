@@ -4,7 +4,7 @@ from doors import *
 class Room:
     id_counter = 1
 
-    def __init__(self, name, description, blurb, doors=None, items=None, visited=False):
+    def __init__(self, name, description, blurb, doors=None, items=None, visited=False, **kwargs):
         if doors is None:
             doors = []
         if items is None:
@@ -54,7 +54,7 @@ outside = Room('Outside', 'Full description tbd', 'Outside of OOP Manor.')
 laboratory = Room('Laboratory', 'description tbd', 'A disused laboratory.')
 hall_of_easts = Room('Hall of Infinite Easts', 'description tbd', 'An infinite hall in one direction.')
 hallway = Room('Hallway', 'description tbd', 'An L-shaped hallway.')
-library = Room('Library', 'description tbd', 'The library of OOP manor.')
+library = Room('Library', 'description tbd', 'The library of OOP manor.', candle=False)
 
 #Generating items one by one now, later the info will be stored in a data structure
 #foyer
