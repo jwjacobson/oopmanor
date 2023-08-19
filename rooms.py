@@ -55,7 +55,6 @@ laboratory = Room('Laboratory', 'description tbd', 'A disused laboratory.')
 hall_of_easts = Room('Hall of Infinite Easts', 'description tbd', 'An infinite hall in one direction.')
 hallway = Room('Hallway', 'description tbd', 'An L-shaped hallway.')
 library = Room('Library', 'description tbd', 'The library of OOP manor.')
-library.candle_lit=False
 
 #Generating items one by one now, later the info will be stored in a data structure and everything populated by a single function
     #foyer
@@ -76,6 +75,7 @@ hallway.items.append(painting)
 
     #library
 candle = Item('candle', 'A fat candle on a tall brass stand', 'description', location=library, position='in an alcove')
+candle.lit = False
 library.items.append(candle)
 ghost = Item('ghost', 'A spectral presence', 'description', location=library, position='before you', hidden=True, takeable=False, failure_message='Your hands pass through the Hint Ghost!')
 library.items.append(ghost)
