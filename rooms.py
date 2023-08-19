@@ -73,6 +73,11 @@ hallway.items.append(safe)
 painting = Item('painting', 'An impressionistic painting', 'description', location=hallway, position='on the wall')
 hallway.items.append(painting)
 
+#library
+candle = Item('candle', 'A fat candle on a tall brass stand', 'description', location=library, position='in an alcove')
+library.items.append(candle)
+ghost = Item('ghost', 'A spectral presence', 'description', location=library, position='before you', hidden=True, takeable=False, failure_message='Your hands pass through the Hint Ghost!')
+library.items.append(ghost)
 
 all_doors = {
 'Foyer':
