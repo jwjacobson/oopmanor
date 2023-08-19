@@ -15,7 +15,7 @@ class Player:
 
     def look_around(self):
         print(f'\nYou look around the {self.location.name}.')
-        print(self.location.full_description)
+        print(self.location.description)
         self.location.describe_doors()
         for item in self.location.items:
             if item.hidden:
@@ -57,11 +57,11 @@ class Player:
     def arrive(self):
         print(f'\nYou arrive in the {self.location.name}.')
         for door in self.location.doors:        # I know it's inelegant to iterate through all the doors but there's only a few
-                                                # and the alternative is adding another door attribute or doing weird stuff with    directions
+                                                # and the alternative is adding another door attribute or doing weird stuff with  directions
             if door.leads_to == self.prev_location and door.passed == False:
                 self.pass_door(door)
         if self.location.visited == False:
-            print(self.location.full_description)
+            print(self.location.description)
             self.location.visited = True
         self.location.describe_doors()
         for item in self.location.items:
@@ -95,6 +95,7 @@ class Player:
             key.vanish()
         elif len(locked_doors) > 1:
             print('Which door do you want to unlock?')
+            # todo: function for selecting which door to unlock in case of multiple lokced doors 
         else:
             print('You see no doors to unlock.')
         

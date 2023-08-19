@@ -4,7 +4,7 @@ from doors import *
 class Room:
     id_counter = 1
 
-    def __init__(self, name, full_description, brief_description, doors=None, items=None, visited=False):
+    def __init__(self, name, description, blurb, doors=None, items=None, visited=False):
         if doors is None:
             doors = []
         if items is None:
@@ -12,14 +12,14 @@ class Room:
         self.id = Room.id_counter
         Room.id_counter += 1
         self.name = name
-        self.full_description = full_description
-        self.brief_description = brief_description
+        self.description = description
+        self.blurb = blurb
         self.doors = doors
         self.items = items
         self.visited = visited
 
     def __repr__(self):
-        return f'Room {self.id} | {self.name}'
+        return f'Room {self.id} | {self.name} | {self.blurb}'
 
     def remove_item(self, item):
         """Only called when the player takes an item"""
@@ -44,7 +44,9 @@ class Room:
             else:
                 print(f'There is a door to the {door.direction}.')
 
-entrance = Room('Entrance', 'Full description tbd', 'The entrance to OOP Manor.')
+entrance = Room('Entrance',
+'At long last, you stand before the front door of OOP Manor.',
+'The entrance to OOP Manor.')
 
 foyer = Room('Foyer', 'Full description tbd', 'The foyer of OOP Manor.')
 
@@ -52,6 +54,10 @@ outside = Room('Outside', 'Full description tbd', 'Outside of OOP Manor.')
 
 key = Item('key', 'A metal key', location=entrance, position='on the ground')
 entrance.items.append(key)
+
+safe = Item('safe', 'A large safe', location=foyer, position='on the ground', takeable=False, failure_message='The safe is too heavy to lift.')
+foyer.items.append(safe)
+
 
 all_doors = {
 'Entrance':
@@ -61,7 +67,7 @@ all_doors = {
 },
 'Foyer':
 {
-    '1': [['south', entrance], {'locked': True}],
+    '1': [['south', entrance], {'locked': False}],
 }
 }
 
