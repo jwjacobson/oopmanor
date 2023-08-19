@@ -44,14 +44,16 @@ class Room:
             else:
                 print(f'There is a door to the {door.direction}.')
 
+
+#Generating rooms one by one now, later the info will be stored in a data structure
 foyer = Room('Foyer',
 'At long last, you stand before the front door of OOP Manor.',
 'The entrance to OOP Manor.')
-
 main_hall = Room('Main Hall', 'Full description tbd', 'The foyer of OOP Manor.')
-
 outside = Room('Outside', 'Full description tbd', 'Outside of OOP Manor.')
+laboratory = Room('Laboratory', 'description tbd', 'A disused laboratory.')
 
+#Generating items one by one now, later the info will be stored in a data structure
 key = Item('key', 'A metal key', location=foyer, position='on the floor')
 foyer.items.append(key)
 
@@ -68,6 +70,7 @@ all_doors = {
 'Main Hall':
 {
     '1': [['south', foyer], {'locked': False}],
+    '2': [['west', laboratory], {'locked': False}]
 }
 }
 
