@@ -4,7 +4,7 @@ from doors import *
 class Room:
     id_counter = 1
 
-    def __init__(self, name, description, blurb, doors=None, items=None, visited=False, **kwargs):
+    def __init__(self, name, description, blurb, doors=None, items=None, visited=False):
         if doors is None:
             doors = []
         if items is None:
@@ -54,26 +54,27 @@ outside = Room('Outside', 'Full description tbd', 'Outside of OOP Manor.')
 laboratory = Room('Laboratory', 'description tbd', 'A disused laboratory.')
 hall_of_easts = Room('Hall of Infinite Easts', 'description tbd', 'An infinite hall in one direction.')
 hallway = Room('Hallway', 'description tbd', 'An L-shaped hallway.')
-library = Room('Library', 'description tbd', 'The library of OOP manor.', candle=False)
+library = Room('Library', 'description tbd', 'The library of OOP manor.')
+library.candle_lit=False
 
-#Generating items one by one now, later the info will be stored in a data structure
-#foyer
+#Generating items one by one now, later the info will be stored in a data structure and everything populated by a single function
+    #foyer
 key = Item('key', 'A metal key', 'description', location=foyer, position='on the floor')
 foyer.items.append(key)
 
-#laboratory
+    #laboratory
 lighter = Item('lighter', 'A purple Bic lighter', 'description', location=laboratory, position='under a chair')
 laboratory.items.append(lighter)
 paper = Item('piece of scrap paper', 'A scrap of paper with writing on it', 'description', location=laboratory, position='on the table')
 laboratory.items.append(paper)
 
-#hallway
+    #hallway
 safe = Item('safe', 'A large safe with a keyboard', 'description', location=hallway, position='built into the wall', hidden=True, takeable=False, failure_message='The safe is too heavy to lift.')
 hallway.items.append(safe)
 painting = Item('painting', 'An impressionistic painting', 'description', location=hallway, position='on the wall')
 hallway.items.append(painting)
 
-#library
+    #library
 candle = Item('candle', 'A fat candle on a tall brass stand', 'description', location=library, position='in an alcove')
 library.items.append(candle)
 ghost = Item('ghost', 'A spectral presence', 'description', location=library, position='before you', hidden=True, takeable=False, failure_message='Your hands pass through the Hint Ghost!')

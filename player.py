@@ -104,5 +104,27 @@ class Player:
             # todo: function for selecting which door to unlock in case of multiple lokced doors 
         else:
             print('You see no doors to unlock.')
-        
-
+    
+    def candle_switch(self):
+        if self.location != candle.location and candle not in self.inventory:
+            print('You don\'t see a candle anywhere.')
+        elif self.location != library:
+            if library.candle_lit == True:
+                print('The candle refuses to go out!')
+            elif lighter not in self.inventory:
+                print('You have nothing to light the candle with.')
+            else:
+                print('The candle refuses to light!')
+        else:
+            if library.candle_lit:
+                print('You blow out the candle.')
+                library.candle_lit = False
+                ghost.hidden = True
+                print('The Hint Ghost vanishes!')
+            elif lighter not in self.inventory:
+                print('You have nothing to light the candle with.')
+            else:
+                print('You light the candle.')
+                library.candle_lit= True
+                ghost.hidden = False
+                print('A ghost appears!')
