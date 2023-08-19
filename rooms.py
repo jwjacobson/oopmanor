@@ -71,14 +71,19 @@ all_doors = {
 'Main Hall':
 {
     '1': [['south', foyer], {'locked': False}],
-    '2': [['west', laboratory], {'locked': False}]
+    '2': [['west', laboratory], {'locked': False}],
+    '3': [['east', hall_of_easts], {'locked': True}]
 },
 'Laboratory':
 {
     '1': [['east', main_hall], {'passed': True}],
+},
+'Hall of Infinite Easts':
+{
+    '1': [['west', main_hall], {'passed': True}],
+    '2': [['east', hall_of_easts], {'locked': False}]
 }
 }
-
 # print(all_doors['Entrance']['1'][0])
 # door = Door(*all_doors['Entrance']['1'][0], **all_doors['Entrance']['1'][1])
 # print(door.locked)
@@ -86,5 +91,6 @@ all_doors = {
 foyer.populate_doors()
 main_hall.populate_doors()
 laboratory.populate_doors()
+hall_of_easts.populate_doors()
 # entrance.describe_doors()
 # print(rooms)
