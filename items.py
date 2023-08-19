@@ -1,10 +1,11 @@
 class Item:
     id_counter = 1
 
-    def __init__(self, name, description, location, position, hidden=False, takeable=True, failure_message=''):
+    def __init__(self, name, blurb, description, location, position, hidden=False, takeable=True, failure_message=''):
         self.id = Item.id_counter
         Item.id_counter += 1
         self.name = name
+        self.blurb = blurb
         self.description = description
         self.location = location
         self.position = position
@@ -13,7 +14,7 @@ class Item:
         self.failure_message = failure_message
 
     def __repr__(self):
-        return f'Item {self.id} | {self.name}'
+        return f'Item {self.id} | {self.name} | {self.blurb}'
 
     def vanish(self):
         print(f'The {self.name} crumbles to dust!')

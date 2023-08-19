@@ -57,8 +57,13 @@ hallway = Room('Hallway', 'description tbd', 'An L-shaped hallway.')
 library = Room('Library', 'description tbd', 'The library of OOP manor.')
 
 #Generating items one by one now, later the info will be stored in a data structure
-key = Item('key', 'A metal key', location=foyer, position='on the floor')
+key = Item('key', 'A metal key', 'description', location=foyer, position='on the floor')
 foyer.items.append(key)
+
+lighter = Item('lighter', 'A purple Bic lighter', 'description', location=laboratory, position='under a chair')
+laboratory.items.append(lighter)
+paper = Item('piece of scrap paper', 'A scrap of paper with writing on it', 'description', location=laboratory, position='on the table')
+laboratory.items.append(paper)
 
 # safe = Item('safe', 'A large safe', location=foyer, position='on the ground', takeable=False, failure_message='The safe is too heavy to lift.')
 # foyer.items.append(safe)
@@ -96,15 +101,11 @@ all_doors = {
     '1': [['east', hallway], {'passed': True}]
 }
 }
-# print(all_doors['Entrance']['1'][0])
-# door = Door(*all_doors['Entrance']['1'][0], **all_doors['Entrance']['1'][1])
-# print(door.locked)
 
+# Populating doors manually one by one for now
 foyer.populate_doors()
 main_hall.populate_doors()
 laboratory.populate_doors()
 hall_of_easts.populate_doors()
 hallway.populate_doors()
 library.populate_doors()
-# entrance.describe_doors()
-# print(rooms)
