@@ -17,7 +17,7 @@ class Item:
         return f'Item {self.id} | {self.name} | {self.blurb}'
 
     def vanish(self):
-        "Keys are destroyed after use."
+        """Keys are destroyed after use."""
         print(f'The {self.name} crumbles to dust!')
         del self
 
@@ -32,7 +32,7 @@ class Item:
 
 """
 The idea below was to have subclasses for different Item types that would specify their use via attributes and functions.
-It turns out that at least in the case of keys (the only item to exist so far) the the use function - unlocking a door - belongs to the Player, and it checks if a key is in inventory before executing. I'm leaving the subclass commented out below in case I decide to use it or something similar in the future.
+It turns out that at least in the case of keys (the only item to exist so far) the use function - unlocking a door - belongs to the Player, and it checks if a key is in inventory before executing. I'm leaving the subclass commented out below in case I decide to use it or something similar in the future.
 """
 # class Key(Item):
 #     def __init__(self, name, description, location, position, hidden=False):
