@@ -123,3 +123,10 @@ class Player:
                 ghost.hidden = False
                 if self.location == library:
                     print('A ghost appears!')
+
+    def talk(self):
+        #for now the only thing you can talk to is the Hint Ghost
+        if self.location != library or candle.lit == False:
+            print('You don\'t see anyone to talk to.')
+            return
+        

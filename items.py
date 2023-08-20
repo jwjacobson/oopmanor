@@ -20,6 +20,14 @@ class Item:
         print(f'The {self.name} crumbles to dust!')
         del self
 
+    def populate_hints(self):
+    # populate ghost hints
+        self.hints = set()
+        with open("./hints.txt") as hints:
+            Hints = hints.readlines()
+            for hint in Hints:
+                self.hints.add(hint.strip())
+
 
 """
 The idea below was to have subclasses for different Item types that would specify their use via attributes and functions.

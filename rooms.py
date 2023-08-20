@@ -79,6 +79,7 @@ candle.lit = False
 library.items.append(candle)
 ghost = Item('ghost', 'A spectral presence', 'description', location=library, position='before you', hidden=True, takeable=False, failure_message='Your hands pass through the Hint Ghost!')
 library.items.append(ghost)
+ghost.populate_hints()
 
 all_doors = {
 'Foyer':

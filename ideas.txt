@@ -33,6 +33,6 @@ Hint ghost hints:
 'They say a Player is only limited by his attributes and functions.'
 'They say the Hint Ghost is not the only ghost in the Manor.'
 'They say that if you really understand these hints, you will certainly find the Object.'
-'They say there's something hidden in the Hall of Statues.'
+'They say there\'s something hidden in the Hall of Statues.'
 'They say the Hint Ghost won't repeat a hint until you've heard them all.'
 'They say the Manor doesn't really exist.'
