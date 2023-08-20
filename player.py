@@ -133,3 +133,9 @@ class Player:
                 ghost.populate_hints()
             print('\nThe Hint Ghost says:')
             print(ghost.hints.pop())
+
+    def examine(self, item):
+        if item.location != self.location and item not in self.inventory:
+            print(f'You do not see a {item.name}.')
+        else:
+            print(item.description)
