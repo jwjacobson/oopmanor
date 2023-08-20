@@ -17,6 +17,7 @@ class Item:
         return f'Item {self.id} | {self.name} | {self.blurb}'
 
     def vanish(self):
+        "Keys are destroyed after use."
         print(f'The {self.name} crumbles to dust!')
         del self
 

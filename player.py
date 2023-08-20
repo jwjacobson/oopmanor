@@ -128,5 +128,8 @@ class Player:
         #for now the only thing you can talk to is the Hint Ghost
         if self.location != library or candle.lit == False:
             print('You don\'t see anyone to talk to.')
-            return
-        
+        else:
+            if not ghost.hints:
+                ghost.populate_hints()
+            print('\nThe Hint Ghost says:')
+            print(ghost.hints.pop())

@@ -32,6 +32,7 @@ player.move(hallway)
 player.candle_switch()
 player.move(library)
 player.candle_switch()
+player.talk()
 
 # player.check_inventory()
 # player.move(entrance)
