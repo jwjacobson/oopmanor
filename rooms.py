@@ -55,6 +55,7 @@ laboratory = Room('Laboratory', 'description tbd', 'A disused laboratory.')
 hall_of_easts = Room('Hall of Infinite Easts', 'description tbd', 'An infinite hall in one direction.')
 hallway = Room('Hallway', 'description tbd', 'An L-shaped hallway.')
 library = Room('Library', 'description tbd', 'The library of OOP manor.')
+tower = Room('Tower', 'description', 'A stone tower with a spiral staircase.')
 
 #Generating items one by one now, later the info will be stored in a data structure and everything populated by a single function
     #foyer
@@ -110,11 +111,16 @@ all_doors = {
 'Hallway':
 {
     '1': [['south', main_hall], {'passed': True}],
-    '2': [['west', library], {'locked': False}]
+    '2': [['west', library], {'locked': False}],
+    '3': [['east', tower], {'hidden': True}]
 },
 'Library':
 {
     '1': [['east', hallway], {'passed': True}]
+},
+'Tower':
+{
+    '1': [['west', hallway], {'passed': True}]
 }
 }
 
@@ -125,4 +131,5 @@ laboratory.populate_doors()
 hall_of_easts.populate_doors()
 hallway.populate_doors()
 library.populate_doors()
+tower.populate_doors()
 
