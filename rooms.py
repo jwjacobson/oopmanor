@@ -4,7 +4,7 @@ from doors import *
 class Room:
     id_counter = 1
 
-    def __init__(self, name, description, blurb, doors=None, items=None, visited=False):
+    def __init__(self, name, blurb, description, doors=None, items=None, visited=False):
         if doors is None:               # These conditionals avoid the issue of having a mutable data structure as a default value
             doors = []
         if items is None:
@@ -12,8 +12,8 @@ class Room:
         self.id = Room.id_counter       # IDs are used in the repr and for debugging purposes
         Room.id_counter += 1
         self.name = name
-        self.description = description  # The full description read upon first entering a room or when examining it
         self.blurb = blurb              # A short description, possibly superfluous
+        self.description = description  # The full description read upon first entering a room or when examining it
         self.doors = doors              # The doors in the room
         self.items = items              # The items in the room
         self.visited = visited          # Whether or not the player has been to the room
@@ -44,49 +44,51 @@ class Room:
             else:
                 print(f'There is a door to the {door.direction}.')
 
-    
-    # def __init__(self, name, description, blurb, doors=None, items=None, visited=False):
-    #         if doors is None:               # These conditionals avoid the issue of having a mutable data structure as a default value
-    #             doors = []
-    #         if items is None:
-    #             items = []
-    #         self.id = Room.id_counter       # IDs are used in the repr and for debugging purposes
-    #         Room.id_counter += 1
-    #         self.name = name
-    #         self.description = description  # The full description read upon first entering a room or when examining it
-    #         self.blurb = blurb              # A short description, possibly superfluous
-    #         self.doors = doors              # The doors in the room
-    #         self.items = items              # The items in the room
-    #         self.visited = visited          # Whether or not the player has been to the room
+class Transformer(Room):
+    """A Transformer is a Room that changes shape in response to a catalyst.""" 
+    def __init__(self, name, blurb, description, new_blurb, new_description, doors=None, items=None, visited=False):
+            if doors is None:               # These conditionals avoid the issue of having a mutable data structure as a default value
+                doors = []
+            if items is None:
+                items = []
+            self.id = Room.id_counter       # IDs are used in the repr and for debugging purposes
+            Room.id_counter += 1
+            self.name = name
+            self.blurb = blurb              # A short description, possibly superfluous
+            self.description = description  # The full description read upon first entering a room or when examining it
+            self.new_blurb = new_blurb              # A short description, possibly superfluous
+            self.new_description = new_description  # The full description read upon first entering a room or when examining it
+            self.doors = doors              # The doors in the room
+            self.items = items              # The items in the room
+            self.visited = visited          # Whether or not the player has been to the room
 
-    # def __repr__(self):
-    #     return f'Room {self.id} | {self.name}'
+    def __repr__(self):
+        return f'Room {self.id} | {self.name}'
 
 #Generating rooms one by one now, later the info will be stored in a data structure and generated with a single function
-foyer = Room('Foyer',
-'The foyer of OOP Manor is a small room dominated by two massive carved-stone planters which fill its east and west sides. In spite of the lack of windows and general gloom, the tropical vegetation is lush and varied, with vines spilling over the edges and climbing the walls. From the center of each planter a stately palm rises nearly to the ceiling. You expect to see brightly colored birds or even a monkey startle at your entrance, but the room is completely quiet. Not even the indifferent buzz of insects breaks the silence.',
-'The foyer of OOP Manor.')
-main_hall = Room('Main Hall',
-'The main hall of OOP Manor stretches approximately 100 meters from east to west.',
-'The main hall of OOP Manor.')
-outside = Room('Outside',
-'To leave the Manor is to abandon your quest.',
-'Outside of OOP Manor.')
-laboratory = Room('Laboratory',
-'description tbd',
-'A disused laboratory.')
-hall_of_easts = Room('Hall of Infinite Easts',
-'description tbd',
-'An infinite hall in one direction.')
-hallway = Room('Hallway',
-'description tbd',
-'An L-shaped hallway.')
-library = Room('Library',
-'description tbd',
-'The library of OOP manor.')
-tower = Room('Tower',
-'description',
-'A stone tower with a spiral staircase.')
+foyer = Room('Foyer', 'The foyer of OOP Manor.',
+'The foyer of OOP Manor is a small room dominated by two massive carved-stone planters which fill its east and west sides. In spite of the lack of windows and general gloom, the tropical vegetation is lush and varied, with vines spilling over the edges and climbing the walls. From the center of each planter a stately palm rises nearly to the ceiling. You expect to see brightly colored birds or even a monkey startle at your entrance, but the room is completely quiet. Not even the indifferent buzz of insects breaks the silence.')
+main_hall = Room('Main Hall', 'The main hall of OOP Manor.',
+'The main hall of OOP Manor stretches approximately 100 meters from east to west.'
+)
+outside = Room('Outside', 'Outside of OOP Manor.',
+'To leave the Manor is to abandon your quest.'
+)
+laboratory = Room('Laboratory', 'A disused laboratory.',
+'description tbd'
+)
+hall_of_easts = Room('Hall of Infinite Easts', 'An infinite hall in one direction.',
+'description tbd'
+)
+hallway = Room('Hallway', 'An L-shaped hallway.',
+'description tbd'
+)
+library = Room('Library', 'The library of OOP manor.',
+'description tbd'
+)
+tower = Room('Tower', 'A stone tower with a spiral staircase.',
+'description'
+)
 
 #Generating items one by one now, later the info will be stored in a data structure and generated by a single function
 #foyer
