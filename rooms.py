@@ -19,7 +19,7 @@ class Room:
         self.visited = visited
 
     def __repr__(self):
-        return f'Room {self.id} | {self.name} | {self.blurb}'
+        return f'Room {self.id} | {self.name}'
 
     def remove_item(self, item):
         """Only called when the player takes an item"""
@@ -133,3 +133,5 @@ hallway.populate_doors()
 library.populate_doors()
 tower.populate_doors()
 
+print(painting)
+print(library)

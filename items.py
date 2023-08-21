@@ -15,7 +15,7 @@ class Item:
         self.reveal_message = reveal_message
 
     def __repr__(self):
-        return f'Item {self.id} | {self.name} | {self.blurb}'
+        return f'Item {self.id} | {self.name}'
 
     def vanish(self):
         """Keys are destroyed after use."""
@@ -45,6 +45,7 @@ class Concealer(Item):
         self.takeable = takeable
         self.failure_message = failure_message
         self.reveal_message = reveal_message
+
 
 
 """
