@@ -32,7 +32,7 @@ class Item:
 
 
 class Concealer(Item):
-    """A concealer hides another item behind or under it. Taking the concealer reveals the hidden item"""
+    """A concealer hides another item behind or under it. Taking or otherwise manipulating the concealer reveals the hidden item"""
     def __init__(self, name, blurb, description, location, position, hides: Item, hidden=False, takeable=True, failure_message='', reveal_message=''):
         self.id = Item.id_counter
         self.name = name
@@ -49,3 +49,18 @@ class Concealer(Item):
     def unconceal(self):
         self.hides.hidden = False
         print(self.hides.reveal_message)
+
+class Transformer(Item):
+    """A transformer alters the structure of a room when manipulated."""
+    def __init__(self, name, blurb, description, location, position, transforms: Item, hidden=False, takeable=True, failure_message='', reveal_message=''):
+        self.id = Item.id_counter
+        self.name = name
+        self.blurb = blurb
+        self.description = description
+        self.location = location
+        self.position = position
+        self.transforms = transforms              # unique to Transformers: the room altered by the Transformer
+        self.hidden = hidden
+        self.takeable = takeable
+        self.failure_message = failure_message
+        self.reveal_message = reveal_message
