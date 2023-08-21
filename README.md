@@ -6,7 +6,7 @@ I'm making a text adventure to deepen and refine my **object-oriented programmin
 
 In the game, you play an adventurer who just arrived at OOP Manor, looking for the fabled Object. Will you succeed where others failed?
 
-Gameplay is standard for a text adventure: walk from room to room, read descriptions, take and manipulate objects, solve puzzles, laugh at my jokes! I don't know how elaborate it will be, but the OOP approach means once the formal groundwork is laid, adding more rooms/items/puzzles will be relatively easy.
+Gameplay is standard for a text adventure: walk from room to room, read descriptions, take and manipulate items, solve puzzles, laugh at my jokes! I don't know how elaborate it will be, but the OOP approach means once the formal groundwork is laid, adding more rooms/items/puzzles will be relatively easy.
 
 The game is not yet playable.
 

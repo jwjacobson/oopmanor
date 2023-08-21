@@ -68,7 +68,11 @@ paper = Item('piece of scrap paper', 'A scrap of paper with writing on it', 'A s
 laboratory.items.append(paper)
 
     #hallway
-safe = Item('safe', 'A large safe with a keyboard', 'A modern safe with a small screen and full keyboard for password input. It accepts lower-case letters, digits, and spaces.', location=hallway, position='built into the wall', hidden=True, takeable=False, failure_message='You would need special eqipment to remove the safe from the wall.', reveal_message='A safe was hidden behind the painting!')
+switch = Item('switch', 'A metal toggle switch', 'A small metal toggle switch', location=hallway, position='in the safe', hidden=True, takeable=False, failure_message='The switch is attached to the safe.', reveal_message='There was a switch under the note!')
+hallway.items.append(switch)
+note = Concealer('note', 'A post-it note', 'A yellow post-it note with a message neatly written in pen. It reads: \'Did you really think the Object would be in here?\'', location=hallway, position='in the safe', hides=switch, hidden=True, reveal_message='There is a note inside the safe!')
+hallway.items.append(note)
+safe = Concealer('safe', 'A large safe with a keyboard', 'A modern safe with a small screen and full keyboard for password input. It accepts lower-case letters, digits, and spaces.', location=hallway, position='built into the wall', hides=note, hidden=True, takeable=False, failure_message='You would need special eqipment to remove the safe from the wall.', reveal_message='A safe was hidden behind the painting!')
 hallway.items.append(safe)
 painting = Concealer('painting', 'An impressionistic painting', 'An impressionistic painting depicting a figure in blue atop a white horse racing through a green field. You feel like you\'ve seen it before. A small plaque on the bottom of the frame is engraved with the words \'DER BLAUE REITER\'.', location=hallway, position='on the wall', hides=safe)
 hallway.items.append(painting)

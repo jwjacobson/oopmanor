@@ -14,25 +14,4 @@ safe contains nothing of value
 
 various events/objects/rooms labeled as secret, increase players' secret counter by 1
 
-
-Hint ghost hints:
-'They say that by definition, an Object is that which appears before a Subject.'
-'They say that some kind of code is essential to finding the Object.'
-'A wise person told me that an Object can only exist if posited by a Subject. But what is the nature of this positing...?'
-'They say there is at least one Room in the Manor that you can never visit by natural means.'
-'They say that most Rooms are harmless, but some are very dangerous.'
-'They say you need to light a candle to talk to the Hint Ghost... but you already know that, don't you?'
-'They say that certain secrets are hidden outside the Manor.'
-'Some say the Object is a myth; others that it certainly exists, but is unknowable to us.'
-'They say not everything the Hint Ghost tells you is true... but you don't believe them, do you?'
-'They say Alf and Meg surpass all other contractors in ability, knowhow, and temperament.'
-'I saw the Object once, but when I tried to pick it up, my hands went right through it. When I went back to where it was, it was gone!'
-'They say that no Item is useless.'
-'They say you don't need every Item to find the Object.'
-'They say the Manor is full of secrets.'
-'They say a Player is only limited by his attributes and functions.'
-'They say the Hint Ghost is not the only ghost in the Manor.'
-'They say that if you really understand these hints, you will certainly find the Object.'
-'They say there\'s something hidden in the Hall of Statues.'
-'They say the Hint Ghost won't repeat a hint until you've heard them all.'
-'They say the Manor doesn't really exist.'
+high score list accessed from main menu includes player name, # of secrets, and outcome (quit, died, won)

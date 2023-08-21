@@ -1,6 +1,6 @@
 They say that by definition, an Object is that which appears before a Subject.
-They say that some kind of code is essential to finding the Object.
-A wise person told me that an Object can only exist if posited by a Subject. But what is the nature of this positing...?
+They say that finding the Object has something to do with a code.
+I read in one of the books here that an Object can only exist if posited by a Subject. But what is the nature of this positing...?
 They say there is at least one Room in the Manor that you can never visit by natural means.
 They say that most Rooms are harmless, but some are very dangerous.
 They say you need to light a candle to talk to the Hint Ghost... but you already know that, don't you?
@@ -8,13 +8,26 @@ They say that certain secrets are hidden outside the Manor.
 Some say the Object is a myth; others that it certainly exists, but is unknowable to us.
 They say not everything the Hint Ghost tells you is true... but you don't believe them, do you?
 They say Alf and Meg surpass all other contractors in ability, knowhow, and temperament.
-I saw the Object once, but when I tried to pick it up, my hands went right through it. When I went back to where it was, it was gone!
-They say that no Item is useless.
+One adventurer claimed she saw the Object in the foyer, but she couldn't pick it up. When she came back later, it was gone.
+They say that no Item in the Manor is useless.
 They say you don't need every Item to find the Object.
-They say the Manor is full of secrets.
-They say a Player is only limited by his attributes and functions.
+They say the every Room in the Manor holds at least one secret.
+They say the Manor keeps track of which secrets an adventurer has found.
+They say a Player is only as powerful as his attributes and functions allow. What's a Player?
 They say the Hint Ghost is not the only ghost in the Manor.
 They say that if you really understand these hints, you will certainly find the Object.
-They say there\'s something hidden in the Hall of Statues.
+They say there's something hidden in the Hall of Statues.
 They say the Hint Ghost won't repeat a hint until you've heard them all.
 They say the Manor doesn't really exist.
+They say examining Items will help you solve some puzzles.
+I read in one of the books here that an adventurer named {player.name} will find the Object. What's your name, by the way?
+One adventurer wouldn't stop talking about something called Zork. Do you know what that is?
+In the old days, the library was full of scholars and the laboratory was full of scientists. Now they've all moved on...
+In the old days, the studios were full of artists and the practice rooms were full of musicians. Now they've all moved on...
+In the old days, the gardens were full of poets and the verandas were full of philosophers. Now they've all moved on... 
+Could you scratch my back for me? Just kidding!
+I read in one of the books here that we're not supposed to treat other people as objects. Does that include ghosts?
+I've read every book in here. If it weren't for Haunted Interlibrary Loan, I'd be bored out of my mind!
+They say the Hall of Infinite Easts is only infinite if you enter from the west.
+One adventurer claimed the Hall of Infinite Easts was orientalist.
+They say if you eat the food of the Manor, you'll never be able to leave.
