@@ -35,6 +35,7 @@ class Concealer(Item):
     """A concealer hides another item behind or under it. Taking or otherwise manipulating the concealer reveals the hidden item"""
     def __init__(self, name, blurb, description, location, position, hides: Item, hidden=False, takeable=True, failure_message='', reveal_message=''):
         self.id = Item.id_counter
+        Item.id_counter += 1
         self.name = name
         self.blurb = blurb
         self.description = description
@@ -46,6 +47,9 @@ class Concealer(Item):
         self.failure_message = failure_message
         self.reveal_message = reveal_message
 
+    def __repr__(self):
+        return f'Item {self.id} | {self.name} | Conceals {self.hides.name}'
+
     def unconceal(self):
         self.hides.hidden = False
         print(self.hides.reveal_message)
@@ -54,6 +58,7 @@ class Transformer(Item):
     """A transformer alters the structure of a room when manipulated."""
     def __init__(self, name, blurb, description, location, position, transforms: Item, hidden=False, takeable=True, failure_message='', reveal_message=''):
         self.id = Item.id_counter
+        Item.id_counter += 1
         self.name = name
         self.blurb = blurb
         self.description = description
@@ -64,3 +69,6 @@ class Transformer(Item):
         self.takeable = takeable
         self.failure_message = failure_message
         self.reveal_message = reveal_message
+
+    def __repr__(self):
+        return f'Item {self.id} | {self.name} | Transforms {self.transforms.name}'

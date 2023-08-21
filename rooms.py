@@ -146,3 +146,6 @@ hall_of_easts.populate_doors()
 hallway.populate_doors()
 library.populate_doors()
 tower.populate_doors()
+
+print(switch)
+print(note)
