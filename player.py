@@ -31,7 +31,7 @@ class Player:
         else:
             print('You have nothing in your inventory.')
 
-    def take_item(self, item):
+    def take(self, item):
         if self.location == item.location:
             if item.takeable:
                 print(f'You take the {item.name}.')
@@ -41,6 +41,9 @@ class Player:
                 self.location.remove_item(item)
             else:
                 print(item.failure_message)
+            if isinstance(item, Concealer):
+                item.hides.hidden = False
+                print(item.hides.reveal_message)
         else:
             print("You don't see one of those!")
 

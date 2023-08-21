@@ -1,7 +1,7 @@
 class Item:
     id_counter = 1
 
-    def __init__(self, name, blurb, description, location, position, hidden=False, takeable=True, failure_message=''):
+    def __init__(self, name, blurb, description, location, position, hidden=False, takeable=True, failure_message='', reveal_message=''):
         self.id = Item.id_counter
         Item.id_counter += 1
         self.name = name
@@ -12,13 +12,14 @@ class Item:
         self.hidden = hidden
         self.takeable = takeable
         self.failure_message = failure_message
+        self.reveal_message = reveal_message
 
     def __repr__(self):
         return f'Item {self.id} | {self.name} | {self.blurb}'
 
     def vanish(self):
         """Keys are destroyed after use."""
-        print(f'The {self.name} crumbles to dust!')
+        print(f'The {self.name} crumbles to bits!')
         del self
 
     def populate_hints(self):
@@ -28,6 +29,22 @@ class Item:
             Hints = hints.readlines()
             for hint in Hints:
                 self.hints.add(hint.strip())
+
+
+class Concealer(Item):
+    """A concealer hides another item behind or under it. Taking the concealer reveals the hidden item"""
+    def __init__(self, name, blurb, description, location, position, hides: Item, hidden=False, takeable=True, failure_message='', reveal_message=''):
+        self.id = Item.id_counter
+        self.name = name
+        self.blurb = blurb
+        self.description = description
+        self.location = location
+        self.position = position
+        self.hides = hides
+        self.hidden = hidden
+        self.takeable = takeable
+        self.failure_message = failure_message
+        self.reveal_message = reveal_message
 
 
 """

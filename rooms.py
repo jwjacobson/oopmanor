@@ -47,9 +47,9 @@ class Room:
 
 #Generating rooms one by one now, later the info will be stored in a data structure
 foyer = Room('Foyer',
-'At long last, you stand before the front door of OOP Manor.',
+'The foyer of OOP Manor is a small room dominated by two massive stone planters which fill its east and west sides. In spite of the lack of windows and general gloom...',
 'The entrance to OOP Manor.')
-main_hall = Room('Main Hall', 'Full description tbd', 'The foyer of OOP Manor.')
+main_hall = Room('Main Hall', 'The main hall of OOP Manor ', 'The foyer of OOP Manor.')
 outside = Room('Outside', 'Full description tbd', 'Outside of OOP Manor.')
 laboratory = Room('Laboratory', 'description tbd', 'A disused laboratory.')
 hall_of_easts = Room('Hall of Infinite Easts', 'description tbd', 'An infinite hall in one direction.')
@@ -68,9 +68,9 @@ paper = Item('piece of scrap paper', 'A scrap of paper with writing on it', 'A s
 laboratory.items.append(paper)
 
     #hallway
-safe = Item('safe', 'A large safe with a keyboard', 'A modern safe with a small screen and full keyboard for password input. It accepts lower-case letters, digits, and spaces.', location=hallway, position='built into the wall', hidden=True, takeable=False, failure_message='You would need special eqipment to remove the safe from the wall.')
+safe = Item('safe', 'A large safe with a keyboard', 'A modern safe with a small screen and full keyboard for password input. It accepts lower-case letters, digits, and spaces.', location=hallway, position='built into the wall', hidden=True, takeable=False, failure_message='You would need special eqipment to remove the safe from the wall.', reveal_message='A safe was hidden behind the painting!')
 hallway.items.append(safe)
-painting = Item('painting', 'An impressionistic painting', 'An impressionistic painting depicting a figure in blue atop a white horse racing through a green field. You feel like you\'ve seen it before. A small plaque on the bottom of the frame is engraved with the words \'DER BLAUE REITER\'.', location=hallway, position='on the wall')
+painting = Concealer('painting', 'An impressionistic painting', 'An impressionistic painting depicting a figure in blue atop a white horse racing through a green field. You feel like you\'ve seen it before. A small plaque on the bottom of the frame is engraved with the words \'DER BLAUE REITER\'.', location=hallway, position='on the wall', hides=safe)
 hallway.items.append(painting)
 
     #library
@@ -121,3 +121,4 @@ laboratory.populate_doors()
 hall_of_easts.populate_doors()
 hallway.populate_doors()
 library.populate_doors()
+
