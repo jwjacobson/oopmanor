@@ -44,6 +44,23 @@ class Room:
             else:
                 print(f'There is a door to the {door.direction}.')
 
+    
+    # def __init__(self, name, description, blurb, doors=None, items=None, visited=False):
+    #         if doors is None:               # These conditionals avoid the issue of having a mutable data structure as a default value
+    #             doors = []
+    #         if items is None:
+    #             items = []
+    #         self.id = Room.id_counter       # IDs are used in the repr and for debugging purposes
+    #         Room.id_counter += 1
+    #         self.name = name
+    #         self.description = description  # The full description read upon first entering a room or when examining it
+    #         self.blurb = blurb              # A short description, possibly superfluous
+    #         self.doors = doors              # The doors in the room
+    #         self.items = items              # The items in the room
+    #         self.visited = visited          # Whether or not the player has been to the room
+
+    # def __repr__(self):
+    #     return f'Room {self.id} | {self.name}'
 
 #Generating rooms one by one now, later the info will be stored in a data structure and generated with a single function
 foyer = Room('Foyer',
@@ -83,7 +100,7 @@ paper = Item('piece of scrap paper', 'A scrap of paper with writing on it', 'A s
 laboratory.items.append(paper)
 
 #hallway
-switch = Transformer('switch', 'A metal toggle switch', 'A small metal toggle switch', location=hallway, position='in the safe', transforms=hallway, hidden=True, takeable=False, failure_message='The switch is attached to the safe.', reveal_message='There was a switch under the note!')
+switch = Catalyst('switch', 'A metal toggle switch', 'A small metal toggle switch', location=hallway, position='in the safe', transforms=hallway, hidden=True, takeable=False, failure_message='The switch is attached to the safe.', reveal_message='There was a switch under the note!')
 hallway.items.append(switch)
 note = Concealer('note', 'A post-it note', 'A yellow post-it note with a message neatly written in pen. It reads: \'You didn\'t think the Object would be in here, did you?\'', location=hallway, position='in the safe', hides=switch, hidden=True, reveal_message='There is a note inside the safe!')
 hallway.items.append(note)
