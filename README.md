@@ -4,7 +4,7 @@
 ### About the project
 I'm making a text adventure to deepen and refine my **object-oriented programming** skills. It's been a lot of fun so far and could even be a step toward my goal of eventually creating a roguelike.
 
-In the game, you play an adventurer who just arrived at OOP Manor, looking for the fabled Object. Will you succeed where others failed?
+In the game, you play an adventurer who just arrived at OOP Manor, looking for the fabled Object. Will you succeed where others failed? Have others failed? Has anyone even tried this?
 
 Gameplay is standard for a text adventure: walk from room to room, read descriptions, take and manipulate items, solve puzzles, laugh at my jokes! I don't know how elaborate it will be, but the OOP approach means once the formal groundwork is laid, adding more rooms/items/puzzles will be relatively easy.
 

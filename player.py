@@ -42,8 +42,7 @@ class Player:
             else:
                 print(item.failure_message)
             if isinstance(item, Concealer):
-                item.hides.hidden = False
-                print(item.hides.reveal_message)
+                item.unconceal()
         else:
             print("You don't see one of those!")
 

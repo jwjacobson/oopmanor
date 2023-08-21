@@ -5,14 +5,14 @@ class Item:
         self.id = Item.id_counter
         Item.id_counter += 1
         self.name = name
-        self.blurb = blurb
-        self.description = description
-        self.location = location
-        self.position = position
-        self.hidden = hidden
-        self.takeable = takeable
-        self.failure_message = failure_message
-        self.reveal_message = reveal_message
+        self.blurb = blurb                      # short description - might be superfluous
+        self.description = description          # detailed description
+        self.location = location                # the room where the item is, unless in inventory
+        self.position = position                # a phrase describing position in the room, for variety
+        self.hidden = hidden                    # hidden items do not appear
+        self.takeable = takeable                # whether or not an item can be taken into inventory
+        self.failure_message = failure_message  # displays if the player tries to take an untakeable item
+        self.reveal_message = reveal_message    # displays when a hidden item becomes unhidden
 
     def __repr__(self):
         return f'Item {self.id} | {self.name}'
@@ -40,23 +40,12 @@ class Concealer(Item):
         self.description = description
         self.location = location
         self.position = position
-        self.hides = hides
+        self.hides = hides              # unique to Concealers: the item hidden by the Concealer
         self.hidden = hidden
         self.takeable = takeable
         self.failure_message = failure_message
         self.reveal_message = reveal_message
 
-
-
-"""
-The idea below was to have subclasses for different Item types that would specify their use via attributes and functions.
-It turns out that at least in the case of keys (the only item to exist so far) the use function - unlocking a door - belongs to the Player, and it checks if a key is in inventory before executing. I'm leaving the subclass commented out below in case I decide to use it or something similar in the future.
-"""
-# class Key(Item):
-#     def __init__(self, name, description, location, position, hidden=False):
-#         self.id = Item.id_counter
-#         self.name = name
-#         self.description = description
-#         self.location = location
-#         self.position = position
-#         self.hidden = hidden
+    def unconceal(self):
+        self.hides.hidden = False
+        print(self.hides.reveal_message)

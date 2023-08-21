@@ -16,16 +16,3 @@ class Door:
     def unlock(self):
         self.locked = False
 
-# entrance = Room('Entrance', 'The entrance to OOP Manor.')
-# test_door = Door('n', leads_to=entrance)
-# print(test_door)
-
-# all_doors = {
-# 'Entrance':
-# {
-#     '1': [['north', foyer], {'locked': True}],
-#     '2': [['south', 'out',], {'passed': True}]
-# }
-# }
-# print(all_doors['Entrance'][0])
-
