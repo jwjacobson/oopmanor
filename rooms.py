@@ -46,21 +46,22 @@ class Room:
 
 class Transformer(Room):
     """A Transformer is a Room that changes shape in response to a catalyst.""" 
-    def __init__(self, name, blurb, description, new_blurb, new_description, doors=None, items=None, visited=False):
-            if doors is None:               # These conditionals avoid the issue of having a mutable data structure as a default value
+    def __init__(self, name, blurb, description, new_blurb, new_description, doors=None, items=None, visited=False, transformation_message=''):
+            if doors is None:               
                 doors = []
             if items is None:
                 items = []
-            self.id = Room.id_counter       # IDs are used in the repr and for debugging purposes
+            self.id = Room.id_counter       
             Room.id_counter += 1
             self.name = name
-            self.blurb = blurb              # A short description, possibly superfluous
-            self.description = description  # The full description read upon first entering a room or when examining it
-            self.new_blurb = new_blurb              # A short description, possibly superfluous
-            self.new_description = new_description  # The full description read upon first entering a room or when examining it
-            self.doors = doors              # The doors in the room
-            self.items = items              # The items in the room
-            self.visited = visited          # Whether or not the player has been to the room
+            self.blurb = blurb              
+            self.description = description  
+            self.new_blurb = new_blurb              # A new short description post-transformation
+            self.new_description = new_description  # A new full description post-transformation
+            self.doors = doors              
+            self.items = items              
+            self.visited = visited
+            self.transformation_message = transformation_message
 
     def __repr__(self):
         return f'Room {self.id} | {self.name}'
@@ -80,8 +81,11 @@ laboratory = Room('Laboratory', 'A disused laboratory.',
 hall_of_easts = Room('Hall of Infinite Easts', 'An infinite hall in one direction.',
 'description tbd'
 )
-hallway = Room('Hallway', 'An L-shaped hallway.',
-'description tbd'
+hallway = Transformer('Hallway', 'An L-shaped hallway.',
+'description tbd',
+'A T-shaped hallway',
+'new description tbd',
+transformation_message='The wall to your right collapses, revealing a previously hidden branch of the hallway!'
 )
 library = Room('Library', 'The library of OOP manor.',
 'description tbd'

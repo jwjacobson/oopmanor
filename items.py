@@ -72,3 +72,11 @@ class Catalyst(Item):
 
     def __repr__(self):
         return f'Item {self.id} | {self.name} | Transforms {self.transforms.name}'
+
+    def transform(self, room):
+        print(room.transformation_message)
+        room.blurb = room.new_blurb
+        room.description = room.new_description
+        for door in room.doors:
+            if door.hidden:
+                door.hidden = False
