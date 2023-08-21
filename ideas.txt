@@ -1,17 +1,18 @@
 putting ideas here as I think of them so as not to forget
 
-haunted library has hint ghost who dispenses hints
+#haunted library has hint ghost who dispenses hints
+if you listen to all the hints you unlock hint ghost poetry, which is actual modernist poetry
 
-hall of infinite easts (under construction)
+#hall of infinite easts (under construction)
 alf and meg, infinite contractors
 reasonable hourly rates!
 infinite satisfaction guaranteed!
 
-locked safe hidden behind painting
-solution is rot13 of the title of the painting
-hint for rot13 hidden in other room scrawled on a piece of scrap paper
-safe contains nothing of value 
+#locked safe hidden behind painting
+#solution is rot13 of the title of the painting
+#hint for rot13 hidden in other room scrawled on a piece of scrap paper
+#safe contains nothing of value 
 
-various events/objects/rooms labeled as secret, increase players' secret counter by 1
+#various events/objects/rooms labeled as secret, increase players' secret counter by 1
 
 high score list accessed from main menu includes player name, # of secrets, and outcome (quit, died, won)

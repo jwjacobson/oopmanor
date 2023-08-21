@@ -11,7 +11,7 @@ They say Alf and Meg surpass all other contractors in ability, knowhow, and temp
 One adventurer claimed she saw the Object in the foyer, but she couldn't pick it up. When she came back later, it was gone.
 They say that no Item in the Manor is useless.
 They say you don't need every Item to find the Object.
-They say the every Room in the Manor holds at least one secret.
+They say every Room in the Manor holds at least one secret.
 They say the Manor keeps track of which secrets an adventurer has found.
 They say a Player is only as powerful as his attributes and functions allow. What's a Player?
 They say the Hint Ghost is not the only ghost in the Manor.
@@ -31,3 +31,4 @@ I've read every book in here. If it weren't for Haunted Interlibrary Loan, I'd b
 They say the Hall of Infinite Easts is only infinite if you enter from the west.
 One adventurer claimed the Hall of Infinite Easts was orientalist.
 They say if you eat the food of the Manor, you'll never be able to leave.
+I can actually go anywhere in the Manor; I just prefer it here.

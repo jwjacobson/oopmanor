@@ -1,3 +1,4 @@
+import codecs
 from rooms import *
 
 class Player:
@@ -46,7 +47,7 @@ class Player:
         else:
             print("You don't see one of those!")
 
-    def drop_item(self, item):
+    def drop(self, item):
         if item in self.inventory:
             item.location = self.location
             item.position = 'on the floor'
@@ -141,3 +142,15 @@ class Player:
             print(f'You do not see a {item.name}.')
         else:
             print(item.description)
+
+    def open_safe(self):
+        if self.location != hallway or safe.hidden:
+            print('You don\'t see a safe.')
+            return
+        target = 'abc'                          # placeholder target
+        attempt = input('Enter password: ')
+        if codecs.encode(attempt, 'rot13') == target:
+            print('The safe pops open!')
+            safe.unconceal()
+        else:
+            print('Incorrect password')
