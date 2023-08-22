@@ -4,11 +4,12 @@ from rooms import *
 class Player:
     """The Player is the protagonist of the game, controlled by the user via a series of menu prompts.
         Most actions in the game are carried out or initiated by the Player."""
-    def __init__(self, name, location: Room, inventory=None, secrets=0, prev_location=outside):
+    def __init__(self, name, location: Room, alive=True, inventory=None, secrets=0, prev_location=outside):
         if inventory is None:               # This conditional avoids the issue of having a mutable data structure as a default value
             inventory = []
         self.name = name                    # Chosen by the user at the start of the game
         self.location = location            # The Room where the player is
+        self.alive = alive                  # Being dead ends the game (Unless...)
         self.inventory = inventory          # A list of the items the Player is carrying 
         self.secrets = 0                    # The number of secrets found, for entry in the High Score table
         self.prev_location = prev_location  # The Player's location before their current location, used in some door/room interactions
@@ -177,3 +178,6 @@ class Player:
             safe.unconceal()
         else:
             print('Incorrect password')
+
+    def die(self):
+        self.alive = False
