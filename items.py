@@ -1,4 +1,7 @@
 class Item:
+    """Items are general-purpose objects; they are the things in rooms the Player can interact with.
+    They can be taken, dropped, moved to other rooms, and examined for information.
+    Certain items are necessary for the Player to perform certain actions."""
     id_counter = 1
 
     def __init__(self, name, blurb, description, location, position, hidden=False, takeable=True, failure_message='', reveal_message=''):
@@ -18,12 +21,12 @@ class Item:
         return f'Item {self.id} | {self.name}'
 
     def vanish(self):
-        """Keys are destroyed after use."""
+        """Keys are destroyed after use, but this function can destroy any item."""
         print(f'The {self.name} crumbles to bits!')
         del self
 
     def populate_hints(self):
-    # populate ghost hints
+    """This function takes hints from a separate file and stores them in a set for use by the Hint Ghost"""
         self.hints = set()
         with open("./hints.txt") as hints:
             Hints = hints.readlines()
@@ -77,6 +80,6 @@ class Catalyst(Item):
         print(room.transformation_message)
         room.blurb = room.new_blurb
         room.description = room.new_description
-        for door in room.doors:
+        for door in room.doors:                 # this assumes that the transformation will reveal a hidden door or doors
             if door.hidden:
                 door.hidden = False

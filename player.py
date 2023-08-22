@@ -2,29 +2,34 @@ import codecs
 from rooms import *
 
 class Player:
+    """The Player is the protagonist of the game, controlled by the user via a series of menu prompts.
+        Most actions in the game are carried out or initiated by the Player."""
     def __init__(self, name, location: Room, inventory=None, secrets=0, prev_location=outside):
-        if inventory is None:
+        if inventory is None:               # This conditional avoids the issue of having a mutable data structure as a default value
             inventory = []
-        self.name = name
-        self.location = location
-        self.inventory = inventory
-        self.secrets = 0
-        self.prev_location = prev_location
+        self.name = name                    # Chosen by the user at the start of the game
+        self.location = location            # The Room where the player is
+        self.inventory = inventory          # A list of the items the Player is carrying 
+        self.secrets = 0                    # The number of secrets found, for entry in the High Score table
+        self.prev_location = prev_location  # The Player's location before their current location, used in some door/room interactions
     
     def __repr__(self):
         return f'Player | {self.name}'
 
     def look_around(self):
+        """This function allows the player to reread the full description of their location
+            and also lists significant features (Items and Doors)"""
         print(f'\nYou look around the {self.location.name}.')
         print(self.location.description)
         self.location.describe_doors()
         for item in self.location.items:
-            if item.hidden:
+            if item.hidden:                 # Hidden Items are invisible to the Player
                 continue
             else:
                 print(f'You see a {item.name} {item.position}.')
 
     def check_inventory(self):
+        """This function allows the Player to view the contents of their inventory."""
         if self.inventory:
             print('You have:')
             for item in self.inventory:
@@ -33,6 +38,7 @@ class Player:
             print('You have nothing in your inventory.')
 
     def take(self, item):
+        """This item allows the Player to take an Item from their location into their inventory."""
         if self.location == item.location:
             if item.takeable:
                 print(f'You take the {item.name}.')
@@ -48,6 +54,7 @@ class Player:
             print("You don't see one of those!")
 
     def drop(self, item):
+        """This function allows the Player to drop an Item from their inventory into their location."""
         if item in self.inventory:
             item.location = self.location
             item.position = 'on the floor'
@@ -58,9 +65,13 @@ class Player:
             print(f"You don't have one of those!")
 
     def pass_door(self, door):
+        """This function marks a door as passed; passed doors print their destination when described"""
         door.passed = True
     
     def arrive(self):
+        """This function handles what happens when a player arrives in a Room:
+        passing the door they came in by, printing the description of the Room of not yet visited,
+        and describing the Room's significant features (Items and Doors)"""
         print(f'\nYou arrive in the {self.location.name}.')
         for door in self.location.doors:        # I know it's inelegant to iterate through all the doors but there's only a few
                                                 # and the alternative is adding another door attribute or doing weird stuff with  directions
@@ -77,6 +88,8 @@ class Player:
                 print(f'You see a {item.name} {item.position}.')
 
     def move(self, destination):
+        """This function first checks if a player can move to the desired location,
+        then moves them there and calls the arrive function above."""
         for door in self.location.doors:
             if door.leads_to == destination and door.locked:
                 print(f'The door to the {door.direction} is locked.')
@@ -87,6 +100,8 @@ class Player:
         self.arrive()
     
     def unlock_door(self):
+        """This function first checks if a player has the means to unlock a door (a key and a locked door),
+        then unlocks the door. The key vanishes after use."""
         if key not in self.inventory:
             print('You need a key to do that.')
             return
@@ -109,6 +124,8 @@ class Player:
             print('You see no doors to unlock.')
     
     def candle_switch(self):
+        """This function first checks if the Player has the means to light or extinguish the ghostly candle,
+        then does so."""
         if self.location != candle.location and candle not in self.inventory:
             print('You don\'t see a candle anywhere.')
         else:
@@ -128,7 +145,7 @@ class Player:
                     print('A ghost appears!')
 
     def talk(self):
-        #for now the only thing you can talk to is the Hint Ghost
+        """This function 'talks' to the Hint Ghost, who at present only dispenses hints."""
         if self.location != library or candle.lit == False:
             print('You don\'t see anyone to talk to.')
         else:
@@ -138,12 +155,14 @@ class Player:
             print(ghost.hints.pop())
 
     def examine(self, item):
+        """This function prints the detailed description of an item in the Player's location or inventory."""
         if item.location != self.location and item not in self.inventory:
             print(f'You do not see a {item.name}.')
         else:
             print(item.description)
 
     def open_safe(self):
+        """This function allows the Player to attempt to open the safe in the hallway."""
         if self.location != hallway or safe.hidden:
             print('You don\'t see a safe.')
             return

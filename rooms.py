@@ -2,6 +2,7 @@ from items import *
 from doors import *
 
 class Room:
+    """Rooms are the basic units of the spatial structure of the Manor. They contain Items and connect to one another via Doors."""
     id_counter = 1
 
     def __init__(self, name, blurb, description, doors=None, items=None, visited=False):
@@ -69,20 +70,22 @@ class Transformer(Room):
 #Generating rooms one by one now, later the info will be stored in a data structure and generated with a single function
 foyer = Room('Foyer', 'The foyer of OOP Manor.',
 'The foyer of OOP Manor is a small room dominated by two massive carved-stone planters which fill its east and west sides. In spite of the lack of windows and general gloom, the tropical vegetation is lush and varied, with vines spilling over the edges and climbing the walls. From the center of each planter a stately palm rises nearly to the ceiling. You expect to see brightly colored birds or even a monkey startle at your entrance, but the room is completely quiet. Not even the indifferent buzz of insects breaks the silence.')
+
 main_hall = Room('Main Hall', 'The main hall of OOP Manor.',
-'The main hall of OOP Manor stretches approximately 100 meters from east to west.'
+'The cavernous main hall of OOP Manor stretches approximately 100 meters from east to west, anchored in its center by a chandelier hanging over a long, fully set dining table. Along the far wall hang painted portraits of Manor nobility, their faces glowering down at you. Above the portraits is a mezzanine running along the north and west walls, with several doors spaced regularly along its length, but you don\'t see a way to access it from here.'
 )
 outside = Room('Outside', 'Outside of OOP Manor.',
 'To leave the Manor is to abandon your quest.'
 )
 laboratory = Room('Laboratory', 'A disused laboratory.',
-'description tbd'
+'The laboratory gives the impression of having been abandoned hastily and never returned to. There are papers scattered about everywhere, but most are so damaged as to be illegible.'
 )
+
 hall_of_easts = Room('Hall of Infinite Easts', 'An infinite hall in one direction.',
-'description tbd'
+'The Hall of Infinite Easts is less spectacular than you would have guessed from the name. It is a short and simple hallway with decor matching that of the main hall. There is a small table by the west door and two full-length mirrors facing each other on the north and south walls halfway across the hallway.'
 )
 hallway = Transformer('Hallway', 'An L-shaped hallway.',
-'description tbd',
+'An unremarkable hallway that travels north, then makes a ninety-degree turn to the west, where it ends in a door.',
 'A T-shaped hallway',
 'new description tbd',
 transformation_message='The wall to your right collapses, revealing a previously hidden branch of the hallway!'
@@ -112,7 +115,7 @@ note = Concealer('note', 'A post-it note', 'A yellow post-it note with a message
 hallway.items.append(note)
 safe = Concealer('safe', 'A large safe with a keyboard', 'A modern safe with a small screen and full keyboard for password input. It accepts lower-case letters, digits, and spaces.', location=hallway, position='built into the wall', hides=note, hidden=True, takeable=False, failure_message='You would need special eqipment to remove the safe from the wall.', reveal_message='A safe was hidden behind the painting!')
 hallway.items.append(safe)
-painting = Concealer('painting', 'An impressionistic painting', 'An impressionistic painting depicting a figure in blue atop a white horse racing through a green field. You feel like you\'ve seen it before. A small plaque on the bottom of the frame is engraved with the words \'DER BLAUE REITER\'.', location=hallway, position='on the wall', hides=safe)
+painting = Concealer('painting', 'An impressionistic painting', 'An impressionistic painting depicting a figure in blue atop a white horse racing through a green field; the landscape seem to blur with the speed of the rider. You feel like you\'ve seen it before. A small plaque on the bottom of the frame is engraved with the words \'DER BLAUE REITER\'.', location=hallway, position='on the wall', hides=safe)
 hallway.items.append(painting)
 
 #library
