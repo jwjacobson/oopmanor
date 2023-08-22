@@ -67,6 +67,29 @@ class Transformer(Room):
     def __repr__(self):
         return f'Room {self.id} | {self.name}'
 
+class Stairwell(Room):
+    """A Stairwell is a Room that contains Stairs for going up or down.""" 
+    def __init__(self, name, blurb, description, doors=None, stairs=None, items=None, visited=False, transformation_message=''):
+            if doors is None:               
+                doors = []
+            if stairs is None:
+                stairs = []
+            if items is None:
+                items = []
+            self.id = Room.id_counter       
+            Room.id_counter += 1
+            self.name = name
+            self.blurb = blurb              
+            self.description = description  
+            self.doors = doors
+            self.stairs = stairs                # Unique to Stairwells              
+            self.items = items              
+            self.visited = visited
+            self.transformation_message = transformation_message
+
+    def __repr__(self):
+        return f'Stairwell {self.id} | {self.name}'
+
 #Generating rooms one by one now, later the info will be stored in a data structure and generated with a single function
 foyer = Room('Foyer', 'The foyer of OOP Manor.',
 'The foyer of OOP Manor is a small room dominated by two massive carved-stone planters which fill its east and west sides. In spite of the lack of windows and general gloom, the tropical vegetation is lush and varied, with vines spilling over the edges and climbing the walls. From the center of each planter a stately palm rises nearly to the ceiling. You expect to see brightly colored birds or even a monkey startle at your entrance, but the room is completely quiet. Not even the indifferent buzz of insects breaks the silence.')
