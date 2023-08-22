@@ -86,6 +86,8 @@ class Player:
                 continue
             else:
                 print(f'You see a {item.name} {item.position}.')
+        if self.location.dangerous:
+            print('You have an uneasy feeling.')
 
     def move(self, destination):
         """This function first checks if a player can move to the desired location,
