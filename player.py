@@ -81,6 +81,8 @@ class Player:
             print(self.location.description)
             self.location.visited = True
         self.location.describe_doors()
+        if isinstance(self.location, Stairwell):
+            self.location.describe_stairs()
         for item in self.location.items:
             if item.hidden:
                 continue
@@ -154,7 +156,7 @@ class Player:
             if not ghost.hints:
                 ghost.populate_hints()
             print('\nThe Hint Ghost says:')
-            print(ghost.hints.pop())
+            print(ghost.hints.pop())          # Popping from a set is sufficiently random for this context
 
     def examine(self, item):
         """This function prints the detailed description of an item in the Player's location or inventory."""
