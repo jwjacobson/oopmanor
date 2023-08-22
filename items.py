@@ -26,7 +26,7 @@ class Item:
         del self
 
     def populate_hints(self):
-    """This function takes hints from a separate file and stores them in a set for use by the Hint Ghost"""
+        """This function takes hints from a separate file and stores them in a set for use by the Hint Ghost"""
         self.hints = set()
         with open("./hints.txt") as hints:
             Hints = hints.readlines()
