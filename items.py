@@ -1,7 +1,7 @@
 class Item:
-    """Items are general-purpose objects; they are the things in rooms the Player can interact with.
+    """Items are general-purpose objects; they are the things in Rooms the Player can interact with.
     They can be taken, dropped, moved to other rooms, and examined for information.
-    Certain items are necessary for the Player to perform certain actions."""
+    Certain items must be present for the Player to perform certain actions."""
     id_counter = 1
 
     def __init__(self, name, blurb, description, location, position, hidden=False, takeable=True, failure_message='', reveal_message=''):
@@ -26,7 +26,7 @@ class Item:
         del self
 
     def populate_hints(self):
-        """This function takes hints from a separate file and stores them in a set for use by the Hint Ghost"""
+        """This function takes hints from a separate file and stores them in a set for use by the Hint Ghost."""
         self.hints = set()
         with open("./hints.txt") as hints:
             Hints = hints.readlines()
@@ -35,7 +35,7 @@ class Item:
 
 
 class Concealer(Item):
-    """A concealer hides another item behind or under it. Taking or otherwise manipulating the concealer reveals the hidden item"""
+    """A concealer hides another item behind or under it. Taking or otherwise manipulating the concealer reveals the hidden item."""
     def __init__(self, name, blurb, description, location, position, hides: Item, hidden=False, takeable=True, failure_message='', reveal_message=''):
         self.id = Item.id_counter
         Item.id_counter += 1

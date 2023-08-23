@@ -2,7 +2,8 @@ from items import *
 from doors import *
 
 class Room:
-    """Rooms are the basic spatial units of the Manor. They contain Items and connect to one another via Doors."""
+    """Rooms are the basic spatial units of the Manor. They contain Items and connect to one another via Doors.
+    Via their descriptions, they also play an essential role in constituting the world of the game for the user."""
     id_counter = 1
 
     def __init__(self, name, blurb, description, doors=None, items=None, visited=False):
@@ -46,7 +47,7 @@ class Room:
                 print(f'There is a door to the {door.direction}.')
 
 class Transformer(Room):
-    """A Transformer is a Room that changes shape in response to a catalyst.""" 
+    """A Transformer is a Room that changes shape in response to a Catalyst.""" 
     def __init__(self, name, blurb, description, new_blurb, new_description, doors=None, items=None, visited=False, transformation_message=''):
             if doors is None:               
                 doors = []
@@ -99,7 +100,7 @@ class Stairwell(Room):
                 print(f'There is a stairway leading {stair.direction} into the gloom.')
 
 class DangerRoom(Room):
-    """A Danger Rooms is a Room that can kill the Player."""
+    """A Danger Room is a Room that can kill the Player."""
     id_counter = 1
 
     def __init__(self, name, blurb, description, doors=None, items=None, visited=False):

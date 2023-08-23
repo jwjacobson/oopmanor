@@ -4,14 +4,16 @@ from rooms import *
 class Player:
     """The Player is the protagonist of the game, controlled by the user via a series of menu prompts.
         Most actions in the game are carried out or initiated by the Player."""
-    def __init__(self, name, location: Room, alive=True, inventory=None, secrets=0, prev_location=outside):
+    def __init__(self, name, location: Room, alive=True, inventory=None, secrets=0, rooms_visited=0, items_found=0,  prev_location=outside):
         if inventory is None:               # This conditional avoids the issue of having a mutable data structure as a default value
             inventory = []
         self.name = name                    # Chosen by the user at the start of the game
         self.location = location            # The Room where the player is
         self.alive = alive                  # Being dead ends the game (Unless...)
         self.inventory = inventory          # A list of the items the Player is carrying 
-        self.secrets = 0                    # The number of secrets found, for entry in the High Score table
+        self.secrets = secrets              # The number of secrets found, for entry in the High Score table
+        self.rooms_visited = rooms_visited
+        self.items_found = items_found
         self.prev_location = prev_location  # The Player's location before their current location, used in some door/room interactions
     
     def __repr__(self):
@@ -66,7 +68,7 @@ class Player:
             print(f"You don't have one of those!")
 
     def pass_door(self, door):
-        """This function marks a door as passed; passed doors print their destination when described"""
+        """This function marks a door as passed; passed doors print their destination when described."""
         door.passed = True
     
     def arrive(self):
@@ -81,6 +83,7 @@ class Player:
         if self.location.visited == False:
             print(self.location.description)
             self.location.visited = True
+            self.rooms_visited += 1
         self.location.describe_doors()
         if isinstance(self.location, Stairwell):
             self.location.describe_stairs()
@@ -182,3 +185,14 @@ class Player:
     def die(self):
         print('You die...')
         self.alive = False
+
+    def status(self):
+        print(f'\nStatus Report: {self.name}')
+        if self.alive:
+            print('You are alive.')
+        else:
+            print('You are dead.')
+        print(f'You have visited {self.rooms_visited} rooms.')
+        print(f'You have found {self.items_found} items.')
+        print(f'You have discovered {self.secrets} secrets.')
+        print('You have yet to find the Object.')
