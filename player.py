@@ -89,7 +89,7 @@ class Player:
                 continue
             else:
                 print(f'You see a {item.name} {item.position}.')
-        if self.location.dangerous:
+        if isinstance(self.location, DangerRoom):
             print('You have an uneasy feeling.')
 
     def move(self, destination):
@@ -180,4 +180,5 @@ class Player:
             print('Incorrect password')
 
     def die(self):
+        print('You die...')
         self.alive = False

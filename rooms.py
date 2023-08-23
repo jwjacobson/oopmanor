@@ -2,10 +2,10 @@ from items import *
 from doors import *
 
 class Room:
-    """Rooms are the basic units of the spatial structure of the Manor. They contain Items and connect to one another via Doors."""
+    """Rooms are the basic spatial units of the Manor. They contain Items and connect to one another via Doors."""
     id_counter = 1
 
-    def __init__(self, name, blurb, description, doors=None, items=None, visited=False, dangerous=False):
+    def __init__(self, name, blurb, description, doors=None, items=None, visited=False):
         if doors is None:               # These conditionals avoid the issue of having a mutable data structure as a default value
             doors = []
         if items is None:
@@ -18,7 +18,6 @@ class Room:
         self.doors = doors              # The doors in the room
         self.items = items              # The items in the room
         self.visited = visited          # Whether or not the player has been to the room
-        self.dangerous = dangerous      # In a dangerous room, the player can die
 
     def __repr__(self):
         return f'Room {self.id} | {self.name}'
@@ -48,7 +47,7 @@ class Room:
 
 class Transformer(Room):
     """A Transformer is a Room that changes shape in response to a catalyst.""" 
-    def __init__(self, name, blurb, description, new_blurb, new_description, doors=None, items=None, visited=False, dangerous=False, transformation_message=''):
+    def __init__(self, name, blurb, description, new_blurb, new_description, doors=None, items=None, visited=False, transformation_message=''):
             if doors is None:               
                 doors = []
             if items is None:
@@ -63,7 +62,6 @@ class Transformer(Room):
             self.doors = doors              
             self.items = items              
             self.visited = visited
-            self.dangerous = dangerous
             self.transformation_message = transformation_message
 
     def __repr__(self):
@@ -71,7 +69,7 @@ class Transformer(Room):
 
 class Stairwell(Room):
     """A Stairwell is a Room that contains Stairs for going up or down.""" 
-    def __init__(self, name, blurb, description, doors=None, stairs=None, items=None, visited=False, dangerous=False, transformation_message=''):
+    def __init__(self, name, blurb, description, doors=None, stairs=None, items=None, visited=False):
             if doors is None:               
                 doors = []
             if stairs is None:
@@ -87,8 +85,6 @@ class Stairwell(Room):
             self.stairs = stairs                # Unique to Stairwells              
             self.items = items              
             self.visited = visited
-            self.dangerous = dangerous
-            self.transformation_message = transformation_message
 
     def __repr__(self):
         return f'Stairwell {self.id} | {self.name}'
@@ -102,6 +98,55 @@ class Stairwell(Room):
             else:
                 print(f'There is a stairway leading {stair.direction} into the gloom.')
 
+class DangerRoom(Room):
+    """A Danger Rooms is a Room that can kill the Player."""
+    id_counter = 1
+
+    def __init__(self, name, blurb, description, doors=None, items=None, visited=False):
+        if doors is None:               
+            doors = []
+        if items is None:
+            items = []
+        self.id = Room.id_counter       
+        Room.id_counter += 1
+        self.name = name
+        self.blurb = blurb              
+        self.description = description  
+        self.doors = doors              
+        self.items = items              
+        self.visited = visited          
+
+    def __repr__(self):
+        return f'Room {self.id} | {self.name}'
+
+    def kill(self, player):
+        player.die()
+
+class DangerStairwell(Stairwell, DangerRoom):
+    """I'm in the Stairwell. I'm in the Danger Room. I'm in the Stairwell and the Danger Room!"""
+    id_counter = 1
+
+    def __init__(self, name, blurb, description, doors=None, stairs=None, items=None, visited=False):
+        if doors is None:               
+            doors = []
+        if stairs is None:
+            stairs = []
+        if items is None:
+            items = []
+        self.id = Room.id_counter       
+        Room.id_counter += 1
+        self.name = name
+        self.blurb = blurb              
+        self.description = description  
+        self.doors = doors
+        self.stairs = stairs              
+        self.items = items              
+        self.visited = visited          
+
+    def __repr__(self):
+        return f'Room {self.id} | {self.name}'
+
+
 #Generating rooms one by one now, later the info will be stored in a data structure and generated with a single function
 foyer = Room('Foyer', 'The foyer of OOP Manor.',
 'The foyer of OOP Manor is a small room dominated by two massive carved-stone planters which fill its east and west sides. In spite of the lack of windows and general gloom, the tropical vegetation is lush and varied, with vines spilling over the edges and climbing the walls. From the center of each planter a stately palm rises nearly to the ceiling. You expect to see brightly colored birds or even a monkey startle at your entrance, but the room is completely quiet. Not even the indifferent buzz of insects breaks the silence.')
@@ -113,7 +158,7 @@ outside = Room('Outside', 'Outside of OOP Manor.',
 'To leave the Manor is to abandon your quest.'
 )
 laboratory = Room('Laboratory', 'A disused laboratory.',
-'The laboratory gives the impression of having been abandoned hastily and never returned to. There are papers scattered about everywhere, but most are so damaged as to be illegible.'
+'The laboratory gives the impression of having been abandoned hastily and never returned to. There are papers scattered about everywhere, but most are so damaged as to be illegible. The northwest corner appears to have contained a large, heavy object, since removed. A sink and eyewash station are next to the door.'
 )
 
 hall_of_easts = Room('Hall of Infinite Easts', 'An infinite hall in one direction.',
@@ -128,8 +173,8 @@ transformation_message='The wall to your right collapses, revealing a previously
 library = Room('Library', 'The library of OOP manor.',
 'description tbd'
 )
-tower = Stairwell('Tower', 'A stone tower with a spiral staircase.',
-'description', dangerous=True
+tower = DangerStairwell('Tower', 'A stone tower with a spiral staircase.',
+'description'
 )
 
 placeholder = Room('Placeholder', 'Placeholder room', 'The /dev/null of rooms.')
