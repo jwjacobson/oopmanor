@@ -4,7 +4,7 @@
 ### About the project
 I'm making a text adventure to deepen and refine my **object-oriented programming** skills. It's been a lot of fun so far and could even be a step toward my goal of eventually creating a roguelike.
 
-As I work I'm finding the big conflict in approach to be between generality and specificity
+As I work I'm finding the big 'conflict' in approach to be between generality and specificity. On the one hand I feel like the big advantage of OOP is the generality of the objects created and thus the modularity of the app. It's always possible to ask, "am I being sufficiently general in how I define this object/function/etc.?" On the other hand it's not possible for me at this point in my development to fully map out everything before starting. Often what gets written is what works for the specific case I'm writing it for when I know I'll have to come back later if I ever want to extend its use. I am comfortable with this non-ideal approach.
 
 ### About the game
 You play an adventurer just arrived at OOP Manor, looking for the fabled Object. Will you succeed where others failed? Have others failed? Has anyone even tried this?
