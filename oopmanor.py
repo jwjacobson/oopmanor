@@ -1,7 +1,7 @@
 from player import *
 
 """
-speculative map generation:
+speculative manor generation sequence:
 generate rooms
 generate doors
 generate items
