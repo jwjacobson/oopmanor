@@ -73,8 +73,12 @@ class Player:
     
     def arrive(self):
         """This function handles what happens when a player arrives in a Room:
-        passing the door they came in by, printing the description of the Room of not yet visited,
+        passing the door they came in by, printing the description of the Room if not yet visited,
         and describing the Room's significant features (Items and Doors)"""
+        if self.location == death:
+            print(self.prev_location.death_message)
+            self.die()
+            return
         print(f'\nYou arrive in the {self.location.name}.')
         for door in self.location.doors:        # I know it's inelegant to iterate through all the doors but there's only a few
                                                 # and the alternative is adding another door attribute or doing weird stuff with  directions
@@ -84,6 +88,9 @@ class Player:
             print(self.location.description)
             self.location.visited = True
             self.rooms_visited += 1
+            for item in self.location.items:
+                if item.hidden == False:
+                    self.items_found += 1
         self.location.describe_doors()
         if isinstance(self.location, Stairwell):
             self.location.describe_stairs()
@@ -99,14 +106,33 @@ class Player:
         """This function first checks if a player can move to the desired location,
         then moves them there and calls the arrive function above."""
         for door in self.location.doors:
-            if door.leads_to == destination and door.locked:
-                print(f'The door to the {door.direction} is locked.')
-                return
+            if door.leads_to == destination:
+                if door.locked:
+                    print(f'The door to the {door.direction} is locked.')
+                    return
+                elif door.warning:
+                    print(door.warning)
+                    return
         print('Moving...')
         self.prev_location = self.location
         self.location = destination
         self.arrive()
     
+    def climb_stairs(self, destination):
+        """Once stairs are more clearly defined this can be integrated into the move function"""
+        for stair in self.location.stairs:
+            if stair.leads_to == destination:           #in this case the function is only being called with death as destination
+                print(stair.warning)
+                decision = input('Really proceed? (y/n)')
+                while decision.lower() != 'y' and decision.lower() != 'n':
+                    decision = input('Answer (Y)es or (N)o.')
+                if decision.lower() == 'n':
+                    print('You change your mind.')
+                else:
+                    self.prev_location = self.location
+                    self.location = destination
+                    self.arrive()
+
     def unlock_door(self):
         """This function first checks if a player has the means to unlock a door (a key and a locked door),
         then unlocks the door. The key vanishes after use."""
@@ -178,6 +204,7 @@ class Player:
         attempt = input('Enter password: ')
         if codecs.encode(attempt, 'rot13') == target:
             print('The safe pops open!')
+            self.secrets += 1
             safe.unconceal()
         else:
             print('Incorrect password')
@@ -188,6 +215,7 @@ class Player:
 
     def status(self):
         print(f'\nStatus Report: {self.name}')
+        print(f'You are in the {self.location.name}; before that you were in the {self.prev_location.name}.')
         if self.alive:
             print('You are alive.')
         else:

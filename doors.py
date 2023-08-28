@@ -11,6 +11,7 @@ class Door:
         self.hidden = kwargs.get('hidden', False)    # Hidden doors cannot be seen or interacted with
         self.passed = kwargs.get('passed', False)    # Passed doors report their destination when described (Before passing the 
                                                      # door the Player doesn't know what's on the other side)
+        self.warning = kwargs.get('warning', '')     # The warning gives the player one more chance not to go through
 
     def __repr__(self):
         return f'Door {self.id} | {self.direction} to {self.leads_to.name}'
@@ -27,7 +28,8 @@ class Stairs(Door):
         self.leads_to = leads_to                     
         self.locked = kwargs.get('locked', False)    
         self.hidden = kwargs.get('hidden', False)    
-        self.passed = kwargs.get('passed', False)    
+        self.passed = kwargs.get('passed', False)
+        self.warning = kwargs.get('warning', '')
 
     def __repr__(self):
         return f'Stairs {self.id} | {self.direction} to {self.leads_to.name}'
