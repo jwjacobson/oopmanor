@@ -51,7 +51,7 @@ class Concealer(Item):
         self.reveal_message = reveal_message
 
     def __repr__(self):
-        return f'Item {self.id} | {self.name} | Conceals {self.hides.name}'
+        return f'Item {self.id} | {self.name} | Conceals {self.hides}'
 
     def unconceal(self):
         self.hides.hidden = False
@@ -76,10 +76,10 @@ class Catalyst(Item):
     def __repr__(self):
         return f'Item {self.id} | {self.name} | Transforms {self.transforms.name}'
 
-    def transform(self, room):
-        print(room.transformation_message)
-        room.blurb = room.new_blurb
-        room.description = room.new_description
-        for door in room.doors:                 # this assumes that the transformation will reveal a hidden door or doors
+    def transform(self):
+        print(self.transforms.transformation_message)
+        self.transforms.blurb = self.transforms.new_blurb
+        self.transforms.description = self.transforms.new_description
+        for door in self.transforms.doors:                 # this assumes that the transformation will reveal a hidden door or doors
             if door.hidden:
                 door.hidden = False

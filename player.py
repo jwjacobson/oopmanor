@@ -79,13 +79,13 @@ class Player:
             print(self.prev_location.death_message)
             self.die()
             return
-        print(f'\nYou arrive in the {self.location.name}.')
+        print(f'\nYou arrive in the {self.location.name}.\n')
         for door in self.location.doors:        # I know it's inelegant to iterate through all the doors but there's only a few
                                                 # and the alternative is adding another door attribute or doing weird stuff with  directions
             if door.leads_to == self.prev_location and door.passed == False:
                 self.pass_door(door)
         if self.location.visited == False:
-            print(self.location.description)
+            print(self.location.description, '\n')
             self.location.visited = True
             self.rooms_visited += 1
             for item in self.location.items:
