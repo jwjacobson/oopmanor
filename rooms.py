@@ -243,7 +243,7 @@ key = Item('key', 'A metal key', 'An antique metal key, dark with age. It has a 
 foyer.items.append(key)
 
 #mainhall
-rope = Catalyst('rope', 'A thick rope.', 'A thick length of rope hanging from the ceiling, frayed at the bottom. It looks sturdy enough to support your weight.', location=main_hall, position='hanging from the ceiling by the curtain', transforms=main_hall, takeable=False, failure_message='The rope is too firmly attached to the ceiling to take.')
+rope = Catalyst('rope', 'A thick rope.', 'A thick length of rope hanging from the ceiling, frayed at the bottom. It looks sturdy enough to support your weight.', location=main_hall, position='hanging from the ceiling by the curtain', transforms=main_hall, verb='pull', takeable=False, failure_message='The rope is too firmly attached to the ceiling to take.')
 main_hall.items.append(rope)
 
 #laboratory
@@ -253,7 +253,7 @@ paper = Item('piece of scrap paper', 'A scrap of paper with writing on it', 'A s
 laboratory.items.append(paper)
 
 #hallway
-switch = Catalyst('switch', 'A metal toggle switch', 'A small metal toggle switch', location=hallway, position='in the safe', transforms=hallway, hidden=True, takeable=False, failure_message='The switch is attached to the safe.', reveal_message='There was a switch under the note!')
+switch = Catalyst('switch', 'A metal toggle switch', 'A small metal toggle switch', location=hallway, position='in the safe', transforms=hallway, verb='flip', hidden=True, takeable=False, failure_message='The switch is attached to the safe.', reveal_message='There was a switch under the note!')
 hallway.items.append(switch)
 note = Concealer('note', 'A post-it note', 'A yellow post-it note with a message neatly written in pen. It reads: \'You didn\'t think the Object would be in here, did you?\'', location=hallway, position='in the safe', hides=switch, hidden=True, reveal_message='There is a note inside the safe!')
 hallway.items.append(note)

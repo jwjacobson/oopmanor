@@ -58,8 +58,9 @@ class Concealer(Item):
         print(self.hides.reveal_message)
 
 class Catalyst(Item):
-    """A catalyst alters the structure of a room when manipulated."""
-    def __init__(self, name, blurb, description, location, position, transforms, hidden=False, takeable=True, failure_message='', reveal_message=''):
+    """A catalyst alters the structure of a room when manipulated.
+    As a rule catalysts will be untakeable, more like features of a room than true items."""
+    def __init__(self, name, blurb, description, location, position, transforms, verb, hidden=False, takeable=False, failure_message='', reveal_message=''):
         self.id = Item.id_counter
         Item.id_counter += 1
         self.name = name
@@ -67,7 +68,8 @@ class Catalyst(Item):
         self.description = description
         self.location = location
         self.position = position
-        self.transforms = transforms              # unique to Catalyst: the room altered by the Catalyst
+        self.transforms = transforms              # unique to Catalyst: the Room altered by the Catalyst
+        self.verb = verb                          # the verb the Player uses when manipulating the Catalyst
         self.hidden = hidden
         self.takeable = takeable
         self.failure_message = failure_message

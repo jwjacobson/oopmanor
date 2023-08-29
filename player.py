@@ -224,3 +224,10 @@ class Player:
         print(f'You have found {self.items_found} items.')
         print(f'You have discovered {self.secrets} secrets.')
         print('You have yet to find the Object.')
+
+    def manipulate(self, catalyst):
+        if isinstance(catalyst, Catalyst):
+            print(f'\nYou {catalyst.verb} the {catalyst.name}.')
+            catalyst.transform()
+        else:
+            print('You can\'t manipulate that.')
