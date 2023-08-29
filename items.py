@@ -59,7 +59,7 @@ class Concealer(Item):
 
 class Catalyst(Item):
     """A catalyst alters the structure of a room when manipulated."""
-    def __init__(self, name, blurb, description, location, position, transforms: Item, hidden=False, takeable=True, failure_message='', reveal_message=''):
+    def __init__(self, name, blurb, description, location, position, transforms, hidden=False, takeable=True, failure_message='', reveal_message=''):
         self.id = Item.id_counter
         Item.id_counter += 1
         self.name = name

@@ -150,23 +150,23 @@ class DangerStairwell(Stairwell, DangerRoom):
 
 #Generating rooms one by one now, later the info will be stored in a data structure and generated with a single function
 foyer = Room('Foyer', 'The foyer of OOP Manor.',
-'The foyer of OOP Manor is a small room dominated by two massive carved-stone planters which fill its east and west sides. In spite of the lack of windows and general gloom, the tropical vegetation is lush and varied, with vines spilling over the edges and climbing the walls. From the center of each planter a stately palm rises nearly to the ceiling. You expect to see brightly colored birds or even a monkey startle at your entrance, but the room is completely quiet. Not even the indifferent buzz of insects breaks the silence.')
+'The foyer of OOP Manor is not large to begin with, dominated by two massive carved-stone planters which fill its east and west sides, leaving only a narrow path to walk through the room. In spite of the lack of windows and general gloom, the tropical vegetation growing from the planters is lush and varied, with vines spilling over the edges and climbing the white-tiled walls. From the center of each planter a stately palm rises nearly to the ceiling where its leaves fan out to form a canopy obscuring the ceiling. You expect to see brightly colored birds or even a monkey startle at your entrance, but the room is completely quiet. Not even the indifferent buzz of insects breaks the silence.')
 
 main_hall = Room('Main Hall', 'The main hall of OOP Manor.',
-'The cavernous main hall of OOP Manor stretches approximately 100 meters from east to west, anchored in its center by a chandelier hanging over a long, fully set dining table. Along the far wall hang painted portraits of Manor nobility, their faces glowering down at you. Above the portraits is a mezzanine running along the north and west walls, with several doors spaced regularly along its length, but you don\'t see a way to access it from here.'
+'The cavernous main hall of OOP Manor stretches approximately 100 meters from east to west, anchored in its center by a five-meter, fully-lit chandelier hanging over a long, fully set dining table. Along the far wall hang painted portraits of Manor nobility, their faces glowering down at you. Above the portraits is a mezzanine running along the north and west walls, with several doors spaced regularly along its length, but you don\'t see a way to access it from here.'
 )
 outside = Room('Outside', 'Outside of OOP Manor.',
 'To leave the Manor is to abandon your quest.'
 )
 laboratory = Room('Laboratory', 'A disused laboratory.',
-'The laboratory gives the impression of having been abandoned hastily and never returned to. There are papers scattered about everywhere, but most are so damaged as to be illegible. The northwest corner appears to have contained a large, heavy object, since removed. A sink and eyewash station are next to the door.'
+'The laboratory gives the impression of having been abandoned hastily and never returned to.  A single fluorescent tube light in a metal housing suspended by two chains from the particle board ceiling. There are papers scattered about everywhere, but most are so damaged as to be illegible. The northwest corner appears to have contained a large, heavy object, since removed. A sink and eyewash station are next to the door.'
 )
 
 hall_of_easts = Room('Hall of Infinite Easts', 'An infinite hall in one direction.',
-'The Hall of Infinite Easts is less spectacular than you would have guessed from the name. It is a short and simple hallway with decor matching that of the main hall. There is a small table by the west door and two full-length mirrors facing each other on the north and south walls halfway across the hallway.'
+'The Hall of Infinite Easts is less spectacular than you would have guessed from the name. It is a short and simple hallway with decor matching that of the main hall. There is a small table by the west door and two full-length mirrors facing each other on the north and south walls halfway across the hallway. If you wish, you can stand between them and see yourself reflected infinitely in either direction.'
 )
 hallway = Transformer('Hallway', 'An L-shaped hallway.',
-'An unremarkable hallway that travels north, then makes a ninety-degree turn to the west, where it ends in a door.',
+'An unremarkable hallway that travels a few meters north before making a ninety-degree turn to the west, where it ends in a door.',
 'A T-shaped hallway',
 'A moderately remarkable T-shaped hallway that travels north before branching east and west. The two branches are identical, save for the rubble from the collapsed wall in the eastern branch.',
 transformation_message='The wall to your right collapses, revealing a previously hidden branch of the hallway!'
@@ -189,9 +189,9 @@ key = Item('key', 'A metal key', 'An antique metal key, dark with age. It has a 
 foyer.items.append(key)
 
 #laboratory
-lighter = Item('lighter', 'A purple Bic lighter', 'A purple Bic lighter with the safety removed so the wheel spins freely.', location=laboratory, position='under a chair')
+lighter = Item('lighter', 'A purple Bic lighter', 'A purple Bic lighter with the safety removed so the wheel spins freely. The tines have not been perfectly bent back into place, so you have to watch your thumb as you flick.', location=laboratory, position='under a chair')
 laboratory.items.append(lighter)
-paper = Item('piece of scrap paper', 'A scrap of paper with writing on it', 'A somewhat rumpled piece of scrap paper. Coffee stains and other damage have rendered most of the writing illegible. Near the center someone has scrawled \'rot13???\', underlined several times.', location=laboratory, position='on the table')
+paper = Item('piece of scrap paper', 'A scrap of paper with writing on it', 'A somewhat rumpled piece of scrap paper. Coffee stains and other damage have rendered most of the writing illegible. Near the center someone has scrawled \'rot13???\' in heavy pencil, underlined several times for emphasis.', location=laboratory, position='on the table')
 laboratory.items.append(paper)
 
 #hallway
