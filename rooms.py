@@ -98,22 +98,9 @@ class DangerRoom(Room):
 class DangerStairwell(Stairwell, DangerRoom):
     """I'm in the Stairwell. I'm in the Danger Room. I'm in the combination Stairwell and Danger Room!"""
     def __init__(self, name, blurb, description, doors=None, stairs=None, items=None, visited=False, death_message=''):
-        if doors is None:               
-            doors = []
-        if stairs is None:
-            stairs = []
-        if items is None:
-            items = []
-        self.id = Room.id_counter       
-        Room.id_counter += 1
-        self.name = name
-        self.blurb = blurb              
-        self.description = description  
-        self.doors = doors
-        self.stairs = stairs              
-        self.items = items              
-        self.visited = visited
-        self.death_message = death_message    
+        Stairwell.__init__(self, name, blurb, description, doors, stairs, items, visited)
+        DangerRoom.__init__(self, name, blurb, description, doors, items, death_message)
+        self.death_message = death_message
 
     def __repr__(self):
         return f'Room {self.id} | {self.name}'

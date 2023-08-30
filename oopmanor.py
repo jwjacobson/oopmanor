@@ -38,8 +38,8 @@ transformation_message='The wall to your right collapses, revealing a previously
 library = Room('Library', 'The library of OOP manor.',
 'description tbd'
 )
-tower = DangerStairwell('Tower', 'A stone tower with a spiral staircase.',
-'description', death_message='As you climb, you stray too close to the edge and slip when a loose stone breaks off of a step. You plummet into the pit below.'
+tower = DangerStairwell('Tower', 'A stone tower with a spiral staircase.', 'description',
+ death_message='As you climb, you stray too close to the edge and slip when a loose stone breaks off of a step. You plummet into the pit below.'
 )
 
 placeholder = Room('Placeholder', 'Placeholder room', 'The /dev/null of rooms.')
