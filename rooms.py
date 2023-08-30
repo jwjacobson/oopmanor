@@ -67,7 +67,7 @@ class Stairwell(Room):
         super().__init__(name, blurb, description, doors, items, visited)
         if stairs is None:
             stairs = []
-        self.stairs = stairs                # Unique to Stairwells              
+        self.stairs = stairs                             
 
     def __repr__(self):
         return f'Stairwell {self.id} | {self.name}'
@@ -85,18 +85,7 @@ class DangerRoom(Room):
     """A Danger Room is a Room that can kill the Player."""
 
     def __init__(self, name, blurb, description, doors=None, items=None, visited=False, death_message=''):
-        if doors is None:               
-            doors = []
-        if items is None:
-            items = []
-        self.id = Room.id_counter       
-        Room.id_counter += 1
-        self.name = name
-        self.blurb = blurb              
-        self.description = description  
-        self.doors = doors              
-        self.items = items              
-        self.visited = visited
+        super().__init__(name, blurb, description, doors, items, visited)
         self.death_message = death_message      # The description of the player's death
 
     def __repr__(self):
