@@ -64,21 +64,10 @@ class Transformer(Room):
 class Stairwell(Room):
     """A Stairwell is a Room that contains Stairs for going up or down.""" 
     def __init__(self, name, blurb, description, doors=None, stairs=None, items=None, visited=False):
-            if doors is None:               
-                doors = []
-            if stairs is None:
-                stairs = []
-            if items is None:
-                items = []
-            self.id = Room.id_counter       
-            Room.id_counter += 1
-            self.name = name
-            self.blurb = blurb              
-            self.description = description  
-            self.doors = doors
-            self.stairs = stairs                # Unique to Stairwells              
-            self.items = items              
-            self.visited = visited
+        super().__init__(name, blurb, description, doors, items, visited)
+        if stairs is None:
+            stairs = []
+        self.stairs = stairs                # Unique to Stairwells              
 
     def __repr__(self):
         return f'Stairwell {self.id} | {self.name}'
