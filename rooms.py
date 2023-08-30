@@ -53,21 +53,10 @@ class Room:
 class Transformer(Room):
     """A Transformer is a Room that changes shape when its Catalyst is manipulated by the Player.""" 
     def __init__(self, name, blurb, description, new_blurb, new_description, doors=None, items=None, visited=False, transformation_message=''):
-            if doors is None:               
-                doors = []
-            if items is None:
-                items = []
-            self.id = Room.id_counter       
-            Room.id_counter += 1
-            self.name = name
-            self.blurb = blurb              
-            self.description = description  
-            self.new_blurb = new_blurb              # A new short description post-transformation
-            self.new_description = new_description  # A new full description post-transformation
-            self.doors = doors              
-            self.items = items              
-            self.visited = visited
-            self.transformation_message = transformation_message # A message describing the transformation when it occurs
+        super().__init__(name, blurb, description, doors, items, visited)
+        self.new_blurb = new_blurb              # A new short description post-transformation
+        self.new_description = new_description  # A new full description post-transformation
+        self.transformation_message = transformation_message # A message describing the transformation when it occurs
 
     def __repr__(self):
         return f'Room {self.id} | {self.name}'
