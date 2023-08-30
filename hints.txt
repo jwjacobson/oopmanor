@@ -19,8 +19,8 @@ They say that if you really understand these hints, you will certainly find the 
 They say there's something hidden in the Hall of Statues.
 They say the Hint Ghost won't repeat a hint until you've heard them all.
 They say the Manor doesn't really exist.
-They say examining Items will help you solve some puzzles.
-I read in one of the books here that an adventurer named {player.name} will find the Object. What's your name, by the way?
+They say it's important to examine Items.
+I read in one of the books here that an adventurer named {player.name} is destined to find the Object. What's your name, by the way?
 One adventurer wouldn't stop talking about something called Zork. Do you know what that is?
 In the old days, the library was full of scholars and the laboratory was full of scientists. Now they've all moved on...
 In the old days, the studios were full of artists and the practice rooms were full of musicians. Now they've all moved on...
@@ -33,3 +33,5 @@ One adventurer claimed the Hall of Infinite Easts was orientalist.
 They say if you eat the food of the Manor, you'll never be able to leave.
 I can actually go anywhere in the Manor; I just prefer it here.
 What are you going to do with the Object one you find it?
+They say if you want to go upstairs, you'd better take the elevator.
+They say one of the laboratory scientists was trying to open the safe, but she didn't succeed.

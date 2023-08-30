@@ -5,7 +5,7 @@ class Item:
     id_counter = 1
 
     def __init__(self, name, blurb, description, location, position, hidden=False, takeable=True, failure_message='', reveal_message=''):
-        self.id = Item.id_counter
+        self.id = Item.id_counter               # IDs are used in the repr and for debugging purposes
         Item.id_counter += 1
         self.name = name
         self.blurb = blurb                      # short description - might be superfluous
@@ -35,7 +35,7 @@ class Item:
 
 
 class Concealer(Item):
-    """A concealer hides another item behind or under it. Taking or otherwise manipulating the concealer reveals the hidden item."""
+    """A concealer hides another item behind or under it. Taking the concealer reveals the hidden item."""
     def __init__(self, name, blurb, description, location, position, hides: Item, hidden=False, takeable=True, failure_message='', reveal_message=''):
         self.id = Item.id_counter
         Item.id_counter += 1
@@ -59,7 +59,7 @@ class Concealer(Item):
 
 class Catalyst(Item):
     """A catalyst alters the structure of a room when manipulated.
-    As a rule catalysts will be untakeable, more like features of a room than true items."""
+    As a rule catalysts are untakeable, more like features of a room than true items."""
     def __init__(self, name, blurb, description, location, position, transforms, verb, hidden=False, takeable=False, failure_message='', reveal_message=''):
         self.id = Item.id_counter
         Item.id_counter += 1
@@ -79,6 +79,7 @@ class Catalyst(Item):
         return f'Item {self.id} | {self.name} | Transforms {self.transforms.name}'
 
     def transform(self):
+        """This function transforms the room when the Catalyst is manipulated by the Player."""
         print(self.transforms.transformation_message)
         self.transforms.blurb = self.transforms.new_blurb
         self.transforms.description = self.transforms.new_description

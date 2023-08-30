@@ -1,20 +1,20 @@
-import codecs
-from rooms import *
+# import codecs
+# from rooms import *
 
 class Player:
     """The Player is the protagonist of the game, controlled by the user via a series of menu prompts.
         Most actions in the game are carried out or initiated by the Player."""
-    def __init__(self, name, location: Room, alive=True, inventory=None, secrets=0, rooms_visited=0, items_found=0,  prev_location=outside):
+    def __init__(self, name, location: Room, prev_location='', alive=True, inventory=None, secrets=0, rooms_visited=0, items_found=0):
         if inventory is None:               # This conditional avoids the issue of having a mutable data structure as a default value
             inventory = []
         self.name = name                    # Chosen by the user at the start of the game
         self.location = location            # The Room where the player is
+        self.prev_location = prev_location  # The Player's location before their current location, used in some door/room interactions
         self.alive = alive                  # Being dead ends the game (Unless...)
         self.inventory = inventory          # A list of the items the Player is carrying 
         self.secrets = secrets              # The number of secrets found, for entry in the High Score table
         self.rooms_visited = rooms_visited
         self.items_found = items_found
-        self.prev_location = prev_location  # The Player's location before their current location, used in some door/room interactions
     
     def __repr__(self):
         return f'Player | {self.name}'
@@ -214,6 +214,8 @@ class Player:
         self.alive = False
 
     def status(self):
+        """The status report prints basic information about the Player.
+        Will perhaps be a function of the house computer."""
         print(f'\nStatus Report: {self.name}')
         print(f'You are in the {self.location.name}; before that you were in the {self.prev_location.name}.')
         if self.alive:
@@ -226,6 +228,8 @@ class Player:
         print('You have yet to find the Object.')
 
     def manipulate(self, catalyst):
+        """This function allows the Player to interact with Catalysts,
+        which change the structure of rooms they are in (mainly by revealing hidden Doors)."""
         if isinstance(catalyst, Catalyst):
             print(f'\nYou {catalyst.verb} the {catalyst.name}.')
             catalyst.transform()
