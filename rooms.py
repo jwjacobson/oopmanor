@@ -49,6 +49,8 @@ class Room:
                 print(f'There is a door to the {door.direction}, leading to the {door.leads_to.name}.')
             else:
                 print(f'There is a door to the {door.direction}.')
+        if isinstance(self, Stairwell):
+            self.describe_stairs()
 
 class Transformer(Room):
     """A Transformer is a Room that changes shape when its Catalyst is manipulated by the Player.""" 
