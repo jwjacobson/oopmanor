@@ -2,51 +2,41 @@
 from items import *
 from doors import *
 from rooms import *
+from room_data import *
 
-#Generating rooms one by one now, later the info will be stored in a data structure and generated with a single function
-print('Generating rooms...')
-all_rooms = {
+# First, create the Rooms of the Manor
+def create_rooms():
+    """Create the Rooms of the Manor using the  data stored in the all_rooms dictionary,
+    storing each instance in the room_instances dictionary."""
+    print('Creating rooms...')
+    for room_key in all_rooms:
+        room_data, room_type = all_rooms[room_key][0]
+        print(f'\nCreating {room_data[0]}...')
+        if room_type == 'vanilla':
+            room_instances[room_key] = Room(*room_data)
+            print(f'{room_instances[room_key]} created.')
+        elif room_type == 'transformer':
+            extra_data = all_rooms[room_key][1]
+            room_instances[room_key] = Transformer(*room_data, **extra_data)
+            print(f'{room_instances[room_key]} created.')
+        elif room_type == 'dangerstairwell':
+            extra_data = all_rooms[room_key][1]
+            room_instances[room_key] = DangerStairwell(*room_data, **extra_data)
+            print(f'{room_instances[room_key]} created.')
+    print('\nRoom creation complete.')
 
-}
-foyer = Room('Foyer', 'The foyer of OOP Manor.',
-'The foyer of OOP Manor is not large to begin with, dominated by two massive carved-stone planters which fill its east and west sides, leaving only a narrow path to walk through the room. In spite of the lack of windows and general gloom, the tropical vegetation growing from the planters is lush and varied, with vines spilling over the edges and climbing the white-tiled walls. From the center of each planter a stately palm rises nearly to the ceiling where its leaves fan out to form a canopy obscuring the ceiling. You expect to see brightly colored birds or even a monkey startle at your entrance, but the room is completely quiet. Not even the indifferent buzz of insects breaks the silence.')
+create_rooms()
 
-main_hall = Transformer('Main Hall', 'The main hall of OOP Manor.',
-'The cavernous main hall of OOP Manor stretches approximately 50 meters from east to west, anchored in its center by a five-meter, fully-lit chandelier hanging over a long, fully set dining table. Along the far wall hang painted portraits of Manor nobility, their faces glowering down at you. Above the portraits is a mezzanine running along the north and west walls, with several doors spaced regularly along its length, but you don\'t see a way to access it from here. A curtain covers the west wall.',
-new_blurb='The main hall of OOP Manor.',
-new_description='The cavernous main hall of OOP Manor stretches approximately 100 meters from east to west, anchored in its center by a five-meter, fully-lit chandelier hanging over a long, fully set dining table. Along the far wall hang painted portraits of Manor nobility, their faces glowering down at you. Above the portraits is a mezzanine running along the north and west walls, with several doors spaced regularly along its length, but you don\'t see a way to access it from here. The curtain on the west wall has been parted, revealing an incongruous metal door, more suited to a school or factory than what you\'ve seen of the Manor.',
-transformation_message='The curtain parts, revealing a door!'
-)
-
-outside = Room('Outside', 'Outside of OOP Manor.',
-'To leave the Manor is to abandon your quest.'
-)
-
-laboratory = Room('Laboratory', 'A disused laboratory.',
-'Entering the laboratory is like stepping into another time and place entirely.  gives the impression of having been abandoned hastily and never returned to. A single fluorescent tube light in a metal housing suspended by two chains from the particle board ceiling. There are papers scattered about everywhere, but most are so damaged as to be illegible. The northwest corner appears to have contained a large, heavy object, since removed. A sink and eyewash station are next to the door.'
-)
-
-hall_of_easts = Room('Hall of Infinite Easts', 'An infinite hall in one direction.',
-'The Hall of Infinite Easts is less spectacular than you would have guessed from the name. It is a short and simple hallway with decor matching that of the main hall. There is a small table by the west door and two full-length mirrors facing each other on the north and south walls halfway across the hallway. If you wish, you can stand between them and see yourself reflected infinitely in either direction.'
-)
-hallway = Transformer('Hallway', 'An L-shaped hallway.',
-'An unremarkable hallway that travels a few meters north before making a ninety-degree turn to the west, where it ends in a door.',
-'A T-shaped hallway',
-'A moderately remarkable T-shaped hallway that travels north before branching east and west. The two branches are identical, save for the rubble from the collapsed wall in the eastern branch.',
-transformation_message='The wall to your right collapses, revealing a previously hidden branch of the hallway!'
-)
-library = Room('Library', 'The library of OOP manor.',
-'description tbd'
-)
-tower = DangerStairwell('Tower', 'A stone tower with a spiral staircase.', 'description',
- death_message='As you climb, you stray too close to the edge and slip when a loose stone breaks off of a step. You plummet into the pit below.'
-)
-
-placeholder = Room('Placeholder', 'Placeholder room', 'The /dev/null of rooms.')
-
-death = Room('Death', 'Where the Player dies', 'The destination for deathtrap doors.'
-)
-print('Done.')
+foyer = room_instances['foyer']
+main_hall = room_instances['main_hall']
+laboratory = room_instances['laboratory']
+hall_of_easts = room_instances['hall_of_easts']
+hallway = room_instances['hallway']
+library = room_instances['library']
+tower = room_instances['tower']
+outside = room_instances['outside']
+death = room_instances['death']
+placeholder = room_instances['placeholder']
 
 all_doors = {
 'Foyer':

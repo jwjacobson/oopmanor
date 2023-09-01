@@ -1,36 +1,3 @@
-class Room:
-    """Rooms are the basic spatial units of the Manor. They contain Items and connect to one another via Doors.
-    Via their descriptions, they also play an essential role in constituting the world of the game for the user."""
-    id_counter = 1
-
-    def __init__(self, name, blurb, description, doors=None, items=None, visited=False):
-        if doors is None:               # These conditionals avoid the issue of having a mutable data structure as a default value
-            doors = []
-        if items is None:
-            items = []
-        self.id = Room.id_counter       # IDs are used in the repr and for debugging purposes
-        Room.id_counter += 1
-        self.name = name
-        self.blurb = blurb              # A short description, possibly superfluous
-        self.description = description  # The full description read upon first entering a room or when examining it
-        self.doors = doors              # The doors in the room
-        self.items = items              # The items in the room
-        self.visited = visited          # Whether or not the player has been to the room
-
-    def __repr__(self):
-        return f'Room {self.id} | {self.name}'
-
-class Transformer(Room):
-    """A Transformer is a Room that changes shape when its Catalyst is manipulated by the Player.""" 
-    def __init__(self, name, blurb, description, new_blurb, new_description, doors=None, items=None, visited=False, transformation_message=''):
-        super().__init__(name, blurb, description, doors, items, visited)
-        self.new_blurb = new_blurb              # A new short description post-transformation
-        self.new_description = new_description  # A new full description post-transformation
-        self.transformation_message = transformation_message # A message describing the transformation when it occurs
-
-    def __repr__(self):
-        return f'Room {self.id} | {self.name}'
-
 all_rooms = {
     'foyer': [[
         (
@@ -55,30 +22,91 @@ all_rooms = {
             'new_description': 'The cavernous main hall of OOP Manor stretches approximately 100 meters from east to west, anchored in its center by a five-meter, fully-lit chandelier hanging over a long, fully set dining table. Along the far wall hang painted portraits of Manor nobility, their faces glowering down at you. Above the portraits is a mezzanine running along the north and west walls, with several doors spaced regularly along its length, but you don\'t see a way to access it from here. The curtain on the west wall has been parted, revealing an incongruous metal door, more suited to a school or factory than what you\'ve seen of the Manor.',
             'transformation_message': 'The curtain parts, revealing a door!'
         }
-    ]
-    # laboratory: [],
-    # hall_of_easts: [],
-    # hallway: [],
-    # library: [],
-    # tower: [],
-    # outside: [],
-    # death: [],
-    # placeholder: []
+    ],
+    'laboratory': [[
+        (
+        'Laboratory',
+        'A disused laboratory.',
+        'Entering the laboratory is like stepping into another time and place entirely.  gives the impression of having been abandoned hastily and never returned to. A single fluorescent tube light in a metal housing suspended by two chains from the particle board ceiling. There are papers scattered about everywhere, but most are so damaged as to be illegible. The northwest corner appears to have contained a large, heavy object, since removed. A sink and eyewash station are next to the door.'
+        ),
+        'vanilla'
+        ],
+        {}
+    ],
+    'hall_of_easts': [[
+        (
+        'Hall of Infinite Easts',
+        'An infinite hall in one direction.',
+        'The Hall of Infinite Easts is less spectacular than you would have guessed from the name. It is a short and simple hallway with decor matching that of the main hall. There is a small table by the west door and two full-length mirrors facing each other on the north and south walls halfway across the hallway. If you wish, you can stand between them and see yourself reflected infinitely in either direction.'
+        ),
+        'vanilla'
+        ],
+        {}
+    ],
+    'hallway': [[
+        (
+        'Hallway',
+        'An L-shaped hallway.',
+        'An unremarkable hallway that travels a few meters north before making a ninety-degree turn to the west, where it ends in a door.'
+        ),
+        'transformer'
+        ],
+        {
+            'new_blurb': 'A T-shaped hallway.',
+            'new_description': 'A moderately remarkable T-shaped hallway that travels north before branching east and west. The two branches are identical, save for the rubble from the collapsed wall in the eastern branch.',
+            'transformation_message': 'The wall to your right collapses, revealing a previously hidden branch of the hallway!'
+        }
+    ],
+    'library': [[
+        (
+        'Library',
+        'The library of OOP Manor.',
+        'Library description.'
+        ),
+        'vanilla'
+        ],
+        {}
+    ],
+    'tower': [[
+        (
+        'Tower',
+        'A stone tower with a spiral staircase.',
+        'Tower description.'
+        ),
+        'dangerstairwell'
+        ],
+        {'death_message': 'As you climb, you stray too close to the edge and slip when a loose stone breaks off of a step. You plummet into the pit below.'}
+    ],
+    'outside':  [[
+        (
+        'Outside',
+        'Outside of OOP Manor.',
+        'To leave the Manor is to abandon your quest.'
+        ),
+        'vanilla'
+        ],
+        {}
+    ],
+    'death': [[
+        (
+        'Death',
+        'Where the player dies.',
+        'The destiantion for deathtrap doors.'
+        ),
+        'vanilla'
+        ],
+        {}
+    ],
+    'placeholder': [[
+        (
+        'Placeholder',
+        'Placeholder room.',
+        'The /dev/null of rooms.'
+        ),
+        'vanilla'
+        ],
+        {}
+    ] 
 }
 
 room_instances = {}
-
-def populate_rooms():
-    for room_key in all_rooms:
-        room_data, room_type = all_rooms[room_key][0]
-        if room_type == 'vanilla':
-            room_instances[room_key] = Room(*room_data)
-        elif room_type == 'transformer':
-            extra_data = all_rooms[room_key][1]
-            room_instances[room_key] = Transformer(*room_data, **extra_data)
-
-populate_rooms()
-
-foyer = room_instances['foyer']
-main_hall = room_instances['main_hall']
-print(main_hall.transformation_message)
