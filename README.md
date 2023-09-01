@@ -4,7 +4,6 @@
 ### About the project
 I'm making a text adventure to deepen and refine my **object-oriented programming** skills. It's been a lot of fun so far and could even be a step toward my goal of eventually creating a roguelike.
 
-
 ### About the game
 You play an adventurer just arrived at OOP Manor, looking for the fabled Object. Will you succeed where others failed? Have others failed? Has anyone even tried this?
 

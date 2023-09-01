@@ -56,7 +56,7 @@ all_doors = {
 },
 'Main Hall':
 {
-    '1': [[('south', foyer), 'vanilla'], {'locked': False}],
+    '1': [[('south', foyer), 'vanilla'], {'passed': True}],
     '2': [[('west', laboratory), 'vanilla'], {'hidden': True}],
     '3': [[('east', hall_of_easts), 'vanilla'], {'locked': True}],
     '4': [[('north', hallway), 'vanilla'], {'locked': False}]
