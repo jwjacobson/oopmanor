@@ -111,6 +111,8 @@ for room in room_instances:
 
 
 # Next, create items
+
+# The all_items dictionary contains all the data necessary for item generation
 all_items = {
 'Foyer':
 {
@@ -160,7 +162,7 @@ all_items = {
          ],
 '2': [
          [
-         ('piece of scrap paper',
+         ('paper',
          'A piece of scrap paper with writing on it.',
          'A somewhat rumpled piece of scrap paper. Coffee stains and other damage have rendered most of the writing illegible. Near the center someone has scrawled \'rot13???\' in heavy pencil, underlined several times for emphasis.',
          laboratory,
@@ -272,7 +274,8 @@ all_items = {
 }
 }
 
-item_instances = {}  # Making an item_instances dictionary to allow references to as-yet uninstantiated items in all_items
+#The item_instances dictionary has item names as keys and item instances as values
+item_instances = {}
 
 def create_items(room):
     for item in all_items[room.name]:
@@ -294,43 +297,26 @@ def create_items(room):
             """I get errors if I list the hidden item directly in all_items; this is a workaround"""
             item_instances[item.name].hides = item_instances[item_instances[item.name].hides] 
 
+# Create the items
 for room in room_instances:
     if room_instances[room].name in all_items:
         create_items(room_instances[room])
 
 
+# Establish simple references for each item instance
+key = item_instances['key']
+rope = item_instances['rope']
+lighter = item_instances['lighter']
+paper = item_instances['paper']
+switch = item_instances['switch']
+note = item_instances['note']
+safe = item_instances['safe']
+painting = item_instances['painting']
+candle = item_instances['candle']
+ghost = item_instances['ghost']
 
 
-# #foyer
-
-# #mainhall
-# rope = Catalyst('rope', 'A thick rope.', 'A thick length of rope hanging from the ceiling, frayed at the bottom. It looks sturdy enough to support your weight.', location=main_hall, position='hanging from the ceiling by the curtain', transforms=main_hall, verb='pull', takeable=False, failure_message='The rope is too firmly attached to the ceiling to take.')
-# main_hall.items.append(rope)
-
-# #laboratory
-# lighter = Item('lighter', 'A purple Bic lighter', 'A purple Bic lighter with the safety removed so the wheel spins freely. The tines have not been perfectly bent back into place, so you have to watch your thumb as you flick.', location=laboratory, position='under a chair')
-# laboratory.items.append(lighter)
-# paper = Item('piece of scrap paper', 'A scrap of paper with writing on it', 'A somewhat rumpled piece of scrap paper. Coffee stains and other damage have rendered most of the writing illegible. Near the center someone has scrawled \'rot13???\' in heavy pencil, underlined several times for emphasis.', location=laboratory, position='on the table')
-# laboratory.items.append(paper)
-
-# #hallway
-# switch = Catalyst('switch', 'A metal toggle switch', 'A small metal toggle switch', location=hallway, position='in the safe', transforms=hallway, verb='flip', hidden=True, takeable=False, failure_message='The switch is attached to the safe.', reveal_message='There was a switch under the note!')
-# hallway.items.append(switch)
-# note = Concealer('note', 'A post-it note', 'A yellow post-it note with a message neatly written in pen. It reads: \'You didn\'t think the Object would be in here, did you?\'', location=hallway, position='in the safe', hides=switch, hidden=True, reveal_message='There is a note inside the safe!')
-# hallway.items.append(note)
-# safe = Concealer('safe', 'A large safe with a keyboard', 'A modern safe with a small screen and full keyboard for password input. It accepts lower-case letters, digits, and spaces.', location=hallway, position='built into the wall', hides=note, hidden=True, takeable=False, failure_message='You would need special equipment to remove the safe from the wall.', reveal_message='A safe was hidden behind the painting!')
-# hallway.items.append(safe)
-# painting = Concealer('painting', 'An impressionistic painting', 'An impressionistic painting depicting a figure in blue atop a white horse racing through a green field; the landscape seem to blur with the speed of the rider. You feel like you\'ve seen it before. A small plaque on the bottom of the frame is engraved with the words \'DER BLAUE REITER\'.', location=hallway, position='on the wall', hides=safe)
-# hallway.items.append(painting)
-
-# #library
-# candle = Item('candle', 'A fat candle on a tall brass stand', 'A fat gray candle. The wick is blackened from being lit but it appears that no wax has been consumed. Looking at it for too long makes you uneasy. ', location=library, position='in an alcove')
-# candle.lit = False
-# library.items.append(candle)
-# ghost = Item('ghost', 'A spectral presence', 'The Hint Ghost of OOP Manor resembles the cartoon ghosts of your childhood: white, diaphanous, billowing in the air despite the lack of breeze. You cannot distinguish a face.', location=library, position='before you', hidden=True, takeable=False, failure_message='Your hands pass through the Hint Ghost!')
-# library.items.append(ghost)
-
-# ghost.populate_hints()
+ghost.populate_hints()
 
 
 
