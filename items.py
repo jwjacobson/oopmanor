@@ -51,7 +51,7 @@ class Concealer(Item):
         self.reveal_message = reveal_message
 
     def __repr__(self):
-        return f'Item {self.id} | {self.name} | Conceals {self.hides.name}'
+        return f'Item {self.id} (Concealer) | {self.name}'
 
     def unconceal(self):
         self.hides.hidden = False
@@ -76,13 +76,17 @@ class Catalyst(Item):
         self.reveal_message = reveal_message
 
     def __repr__(self):
-        return f'Item {self.id} | {self.name} | Transforms {self.transforms.name}'
+        return f'Item {self.id} (Catalyst) | {self.name}'
 
     def transform(self):
-        """This function transforms the room when the Catalyst is manipulated by the Player."""
+        """This function transforms the room when the catalyst is manipulated by the player."""
         print(self.transforms.transformation_message)
         self.transforms.blurb = self.transforms.new_blurb
         self.transforms.description = self.transforms.new_description
         for door in self.transforms.doors:                 # this assumes that the transformation will reveal a hidden door or doors
             if door.hidden:
                 door.hidden = False
+
+# class Thou(Item):
+#     """A Thou is an item with which the player can enter into dialogue
+#     (see https://plato.stanford.edu/entries/buber/#DiaITho)."""

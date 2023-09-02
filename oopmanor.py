@@ -4,7 +4,7 @@ from doors import *
 from rooms import *
 from room_data import *
 
-# First, create the Rooms of the Manor
+# Step 1: create the Rooms of the Manor
 def create_rooms():
     """Create the Rooms of the Manor using the  data stored in the all_rooms dictionary,
     storing each instance in the room_instances dictionary. Print statements for debugging."""
@@ -27,7 +27,7 @@ def create_rooms():
 
 create_rooms()
 
-# Create easy references to each room created for use in creating doors and items
+# Make simple references to each room created for use in creating doors and items
 foyer = room_instances['foyer']
 main_hall = room_instances['main_hall']
 laboratory = room_instances['laboratory']
@@ -39,7 +39,7 @@ outside = room_instances['outside']
 death = room_instances['death']
 placeholder = room_instances['placeholder']
 
-# Next create the doors
+# Step 2: create the doors
 # Storing all_doors in separate file and importing always raises an error, still trying to figure that out
 all_doors = {
 'Foyer':
@@ -105,13 +105,14 @@ def create_doors(room):
     #     for stair in room.stairs:
     #         print(stair)
 
+"""Here is where we create the doors."""
+print('Creating doors...')
 for room in room_instances:
     if room_instances[room].name in all_doors:
         create_doors(room_instances[room])
+print('Door creation complete.')
 
-
-# Next, create items
-
+# Step 3: create the items
 # The all_items dictionary contains all the data necessary for item generation
 all_items = {
 'Foyer':
@@ -278,6 +279,9 @@ all_items = {
 item_instances = {}
 
 def create_items(room):
+    """This function reads the data in all_items to create items and add them to a room.
+    Print statements can be commented/uncommented for debugging/preference."""
+    # print(f'\nCreating items for {room}...')
     for item in all_items[room.name]:
         item_info, item_type = all_items[room.name][item][0][0], all_items[room.name][item][0][1]
         extra_info = all_items[room.name][item][1]
@@ -286,21 +290,34 @@ def create_items(room):
             item = Item(*item_info, **extra_info)
             room.items.append(item)
             item_instances[item.name] = item
+            # print(f'{item} created.')
         elif item_type == 'catalyst':
             item = Catalyst(*item_info, **extra_info)
             room.items.append(item)
             item_instances[item.name] = item
+            # print(f'{item} created.')
         elif item_type == 'concealer':
             item = Concealer(*item_info, **extra_info)
             room.items.append(item)
             item_instances[item.name] = item
-            """I get errors if I list the hidden item directly in all_items; this is a workaround"""
+            """I get errors if I list the hidden item directly in all_items; this is a workaround.
+            The name of the hidden item is in the dictionary, and this reassigns it to the object named."""
             item_instances[item.name].hides = item_instances[item_instances[item.name].hides] 
+            # print(f'{item} created.')
+    # print(f'\nItem creation for {room.name} complete.')
+    # if room.items:
+        # print('The following items were created:')
+        # for item in room.items:
+            # print(item.name)
+    # else:
+        # print('No items were created.')
 
 # Create the items
+print('Creating items...')
 for room in room_instances:
     if room_instances[room].name in all_items:
         create_items(room_instances[room])
+print('Item creation complete.')
 
 
 # Establish simple references for each item instance
