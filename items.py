@@ -51,7 +51,7 @@ class Concealer(Item):
         self.reveal_message = reveal_message
 
     def __repr__(self):
-        return f'Item {self.id} | {self.name} | Conceals {self.hides}'
+        return f'Item {self.id} | {self.name} | Conceals {self.hides.name}'
 
     def unconceal(self):
         self.hides.hidden = False
