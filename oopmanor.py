@@ -335,6 +335,8 @@ ghost = item_instances['ghost']
 
 ghost.populate_hints()
 
+for item_name in item_instances:
+    print(item_instances[item_name])
 
 
 # print('Welcome, adventurer!')

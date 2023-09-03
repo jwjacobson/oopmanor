@@ -38,8 +38,6 @@ class Concealer(Item):
     """A concealer hides another item behind or under it. Taking the concealer reveals the hidden item."""
     def __init__(self, name, blurb, description, location, position, hides: Item, hidden=False, takeable=True, failure_message='', reveal_message=''):
         super().__init__(name, blurb, description, location, position, hidden, takeable, failure_message, reveal_message)
-        self.id = Item.id_counter
-        Item.id_counter += 1
         self.hides = hides              # unique to Concealers: the item hidden by the Concealer
 
     def __repr__(self):
@@ -53,19 +51,9 @@ class Catalyst(Item):
     """A catalyst alters the structure of a room when manipulated.
     As a rule catalysts are untakeable, more like features of a room than true items."""
     def __init__(self, name, blurb, description, location, position, transforms, verb, hidden=False, takeable=False, failure_message='', reveal_message=''):
-        self.id = Item.id_counter
-        Item.id_counter += 1
-        self.name = name
-        self.blurb = blurb
-        self.description = description
-        self.location = location
-        self.position = position
+        super().__init__(name, blurb, description, location, position, takeable, failure_message, reveal_message)
         self.transforms = transforms              # unique to Catalyst: the Room altered by the Catalyst
         self.verb = verb                          # the verb the Player uses when manipulating the Catalyst
-        self.hidden = hidden
-        self.takeable = takeable
-        self.failure_message = failure_message
-        self.reveal_message = reveal_message
 
     def __repr__(self):
         return f'Item {self.id} (Catalyst) | {self.name}'
