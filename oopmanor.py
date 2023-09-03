@@ -338,6 +338,9 @@ ghost.populate_hints()
 for item_name in item_instances:
     print(item_instances[item_name])
 
+martin = Thou('Martin', 'A bearded philosopher.', 'A bearded philosopher, inventor of the concept of this class.', outside, 'in the ether')
+
+print(martin.description)
 
 # print('Welcome, adventurer!')
 # name = input('What is your name? ')

@@ -67,6 +67,8 @@ class Catalyst(Item):
             if door.hidden:
                 door.hidden = False
 
-# class Thou(Item):
-#     """A Thou is an item with which the player can enter into dialogue
-#     (see https://plato.stanford.edu/entries/buber/#DiaITho)."""
+class Thou(Item):
+    """A Thou is an item with which the player can enter into dialogue
+    (see https://plato.stanford.edu/entries/buber/#DiaITho)."""
+    def __init__(self, name, blurb, description, location, position, hidden=False, takeable=False, failure_message='', reveal_message=''):
+        super().__init__(name, blurb, description, location, position, takeable, failure_message, reveal_message)
