@@ -37,18 +37,10 @@ class Item:
 class Concealer(Item):
     """A concealer hides another item behind or under it. Taking the concealer reveals the hidden item."""
     def __init__(self, name, blurb, description, location, position, hides: Item, hidden=False, takeable=True, failure_message='', reveal_message=''):
+        super().__init__(name, blurb, description, location, position, hidden, takeable, failure_message, reveal_message)
         self.id = Item.id_counter
         Item.id_counter += 1
-        self.name = name
-        self.blurb = blurb
-        self.description = description
-        self.location = location
-        self.position = position
         self.hides = hides              # unique to Concealers: the item hidden by the Concealer
-        self.hidden = hidden
-        self.takeable = takeable
-        self.failure_message = failure_message
-        self.reveal_message = reveal_message
 
     def __repr__(self):
         return f'Item {self.id} (Concealer) | {self.name}'
