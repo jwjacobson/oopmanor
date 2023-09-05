@@ -59,7 +59,7 @@ class Catalyst(Item):
         return f'Item {self.id} (Catalyst) | {self.name}'
 
     def transform(self):
-        """This function transforms the room when the catalyst is manipulated by the player."""
+        """This function transforms the room and is called when the catalyst is manipulated by the player."""
         print(self.transforms.transformation_message)
         self.transforms.blurb = self.transforms.new_blurb
         self.transforms.description = self.transforms.new_description
@@ -68,7 +68,10 @@ class Catalyst(Item):
                 door.hidden = False
 
 class Thou(Item):
-    """A Thou is an item with which the player can enter into dialogue
+    """A Thou is an item with which the player can enter into dialogue.
     (see https://plato.stanford.edu/entries/buber/#DiaITho)."""
     def __init__(self, name, blurb, description, location, position, hidden=False, takeable=False, failure_message='', reveal_message=''):
         super().__init__(name, blurb, description, location, position, takeable, failure_message, reveal_message)
+
+    def respond(self):
+        print("Dialogue initiated!")

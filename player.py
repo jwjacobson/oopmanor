@@ -4,7 +4,7 @@
 class Player:
     """The Player is the protagonist of the game, controlled by the user via a series of menu prompts.
         Most actions in the game are carried out or initiated by the Player."""
-    def __init__(self, name, location: Room, prev_location='', alive=True, inventory=None, secrets=0, rooms_visited=0, items_found=0):
+    def __init__(self, name, location, prev_location='', alive=True, inventory=None, secrets=0, rooms_visited=0, items_found=0):
         if inventory is None:               # This conditional avoids the issue of having a mutable data structure as a default value
             inventory = []
         self.name = name                    # Chosen by the user at the start of the game
@@ -41,7 +41,7 @@ class Player:
             print('You have nothing in your inventory.')
 
     def take(self, item):
-        """This item allows the Player to take an Item from their location into their inventory."""
+        """This function allows the Player to take an Item from their location into their inventory."""
         if self.location == item.location:
             if item.takeable:
                 print(f'You take the {item.name}.')
@@ -72,9 +72,9 @@ class Player:
         door.passed = True
     
     def arrive(self):
-        """This function handles what happens when a player arrives in a Room:
-        passing the door they came in by, printing the description of the Room if not yet visited,
-        and describing the Room's significant features (Items and Doors)"""
+        """This function handles what happens when a player arrives in a room:
+        passing the door they came in by, printing the description of the room if not yet visited,
+        and describing the room's significant features (items and doors)"""
         if self.location == death:
             print(self.prev_location.death_message)
             self.die()
@@ -153,7 +153,7 @@ class Player:
             key.vanish()
         elif len(locked_doors) > 1:
             print('Which door do you want to unlock?')
-            # todo: function for selecting which door to unlock in case of multiple lokced doors 
+            # todo: function for selecting which door to unlock in case of multiple locked doors 
         else:
             print('You see no doors to unlock.')
     
@@ -235,3 +235,6 @@ class Player:
             catalyst.transform()
         else:
             print('You can\'t manipulate that.')
+
+    def dialogue(self, thou):
+        thou.respond()

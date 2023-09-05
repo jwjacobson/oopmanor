@@ -1,8 +1,8 @@
-# from player import *
 from items import *
 from doors import *
 from rooms import *
 from room_data import *
+from player import *
 
 # Step 1: create the Rooms of the Manor
 def create_rooms():
@@ -340,7 +340,8 @@ for item_name in item_instances:
 
 martin = Thou('Martin', 'A bearded philosopher.', 'A bearded philosopher, inventor of the concept of this class.', outside, 'in the ether')
 
-print(martin.description)
+player = Player('ababu', location=foyer)
+player.dialogue(martin)
 
 # print('Welcome, adventurer!')
 # name = input('What is your name? ')
