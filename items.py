@@ -73,9 +73,9 @@ class Thou(Item):
     def __init__(self, name, blurb, description, location, position, hidden=False, takeable=False, failure_message='', reveal_message=''):
         super().__init__(name, blurb, description, location, position, takeable, failure_message, reveal_message)
 
-    def respond(self):
+    def respond(self, player):
         """This function allows a Thou to respond to the initiation of dialogue by the Player."""
-        print("Dialogue initiated!")
+        print(f"Dialogue initiated with {player.name}!")
 
 
 # prompt = input('What would you like to say? ')
