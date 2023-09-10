@@ -237,4 +237,5 @@ class Player:
             print('You can\'t manipulate that.')
 
     def dialogue(self, thou):
+        """This function allows the Player to enter into dialogue with a Thou."""
         thou.respond()
