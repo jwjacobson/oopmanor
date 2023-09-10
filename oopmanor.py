@@ -262,11 +262,16 @@ all_items = {
          'The Hint Ghost of OOP Manor resembles the cartoon ghosts of your childhood: white, diaphanous, billowing in the air despite the lack of breeze. You cannot distinguish a face.',
          laboratory,
          'before you'),
-         'vanilla'
+         'thou'
          ],
          {
             'failure_message': 'Your hands pass through the Hint Ghost!',
-            'reveal_message': 'A ghost appears!'
+            'reveal_message': 'A ghost appears!',
+            'menu': {
+                    '1': 'Who are you?',
+                    '2': 'Can you give me a hint?',
+                    '3': 'Nevermind.'
+                    }
          }
          ]
 },
@@ -304,6 +309,12 @@ def create_items(room):
             The name of the hidden item is in the dictionary, and this reassigns it to the object named."""
             item_instances[item.name].hides = item_instances[item_instances[item.name].hides] 
             # print(f'{item} created.')
+        elif item_type == 'thou':
+            item = Thou(*item_info, **extra_info)
+            room.items.append(item)
+            item_instances[item.name] = item
+
+
     # print(f'\nItem creation for {room.name} complete.')
     # if room.items:
         # print('The following items were created:')
@@ -338,10 +349,12 @@ ghost.populate_hints()
 for item_name in item_instances:
     print(item_instances[item_name])
 
-martin = Thou('Martin', 'A bearded philosopher.', 'A bearded philosopher, inventor of the concept of this class.', outside, 'in the ether')
+# martin = Thou('Martin', 'A bearded philosopher.', 'A bearded philosopher, inventor of the concept of this class.', outside, 'in the ether', {'1': 'Who are you?'})
 
 player = Player('ababu', location=foyer)
-player.dialogue(martin)
+# print(ghost.menu)
+player.dialogue(ghost)
+# player.dialogue(martin)
 
 # print('Welcome, adventurer!')
 # name = input('What is your name? ')

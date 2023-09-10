@@ -70,16 +70,14 @@ class Catalyst(Item):
 class Thou(Item):
     """A Thou is an item with which the player can enter into dialogue.
     (see https://plato.stanford.edu/entries/buber/#DiaITho)."""
-    def __init__(self, name, blurb, description, location, position, hidden=False, takeable=False, failure_message='', reveal_message=''):
+    def __init__(self, name, blurb, description, location, position, menu, hidden=False, takeable=False, failure_message='', reveal_message=''):
         super().__init__(name, blurb, description, location, position, takeable, failure_message, reveal_message)
+        self.menu = menu        # The menu holds the Thou's dialogue options
 
     def respond(self, player):
         """This function allows a Thou to respond to the initiation of dialogue by the Player."""
-        print(f"Dialogue initiated with {player.name}!")
+        print(f"Dialogue initiated between {player.name} and {self.name}!")
 
 
 # prompt = input('What would you like to say? ')
-
-'(W)ho are you?'
-'Can you tell me a (H)int?'
 
