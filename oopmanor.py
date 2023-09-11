@@ -268,9 +268,9 @@ all_items = {
             'failure_message': 'Your hands pass through the Hint Ghost!',
             'reveal_message': 'A ghost appears!',
             'menu': {
-                    '1': 'Who are you?',
-                    '2': 'Can you give me a hint?',
-                    '3': 'Nevermind.'
+                    '1': {'Who are you?': 'I\'m the Hint Ghost!'},
+                    '2': {'Can you give me a hint?': 'Sure!'},
+                    '3': {'Nevermind.': 'Okay, see you!'}
                     }
          }
          ]
