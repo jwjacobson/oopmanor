@@ -77,11 +77,15 @@ class Thou(Item):
     def respond(self, player):
         """This function allows a Thou to respond to the initiation of dialogue by the Player."""
         print(f"Dialogue initiated between {player.name} and {self.name}!")
-        print('Available options:\n')
-        for number, question in self.menu.items():
-            print(f'({number}). {question}')
-        prompt = input('\nWhat would you like to say? ')
-        while prompt not in self.menu.keys():
-            prompt = input('Choose one of the options above. ' )
-        print(self.menu[prompt])
-        
+        while True:
+            print('\nAvailable options:\n')
+            for num, qa in self.menu.items():
+                print(f'({num}). {qa[0]}')
+            prompt = input('\nWhat would you like to say? ')
+            while prompt not in self.menu.keys():
+                prompt = input('Choose one of the options above. ' )
+            print(f'\n{self.menu[prompt][0]}')
+            print(self.menu[prompt][1])
+            if prompt == '3':
+                break
+                

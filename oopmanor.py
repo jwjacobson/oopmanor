@@ -268,9 +268,10 @@ all_items = {
             'failure_message': 'Your hands pass through the Hint Ghost!',
             'reveal_message': 'A ghost appears!',
             'menu': {
-                    '1': {'Who are you?': 'I\'m the Hint Ghost!'},
-                    '2': {'Can you give me a hint?': 'Sure!'},
-                    '3': {'Nevermind.': 'Okay, see you!'}
+                    '1': ('Who are you?',
+                        'I\'m the Hint Ghost of OOP Manor! I\'ve been here a long time and know a lot about this place, and I like to share my knowledge.'),
+                    '2': ('Can you give me a hint?', 'Sure!'),
+                    '3': ('Nevermind.', 'Okay, see you!')
                     }
          }
          ]
@@ -352,9 +353,9 @@ for item_name in item_instances:
 # martin = Thou('Martin', 'A bearded philosopher.', 'A bearded philosopher, inventor of the concept of this class.', outside, 'in the ether', {'1': 'Who are you?'})
 
 player = Player('ababu', location=foyer)
-player.open_safe()
+# player.open_safe()
 # print(ghost.menu)
-# player.dialogue(ghost)
+player.dialogue(ghost)
 # player.dialogue(martin)
 
 # print('Welcome, adventurer!')
