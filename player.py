@@ -195,19 +195,24 @@ class Player:
         else:
             print(item.description)
 
+    # Original open_safe method, leaving it here just in case
+    # def open_safe(self):
+    #     """This function allows the Player to attempt to open the safe in the hallway."""
+    #     if self.location != hallway or safe.hidden:
+    #         print('You don\'t see a safe.')
+    #         return
+    #     target = 'abc'                          # placeholder target
+    #     attempt = input('Enter password: ')
+    #     if codecs.encode(attempt, 'rot13') == target:
+    #         print('The safe pops open!')
+    #         self.secrets += 1
+    #         safe.unconceal()
+    #     else:
+    #         print('Incorrect password')
+
     def open_safe(self):
-        """This function allows the Player to attempt to open the safe in the hallway."""
-        if self.location != hallway or safe.hidden:
-            print('You don\'t see a safe.')
-            return
-        target = 'abc'                          # placeholder target
-        attempt = input('Enter password: ')
-        if codecs.encode(attempt, 'rot13') == target:
-            print('The safe pops open!')
-            self.secrets += 1
-            safe.unconceal()
-        else:
-            print('Incorrect password')
+        import safe_interface
+        safe_interface.main()
 
     def die(self):
         print('You die...')

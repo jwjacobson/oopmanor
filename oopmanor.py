@@ -352,8 +352,9 @@ for item_name in item_instances:
 # martin = Thou('Martin', 'A bearded philosopher.', 'A bearded philosopher, inventor of the concept of this class.', outside, 'in the ether', {'1': 'Who are you?'})
 
 player = Player('ababu', location=foyer)
+player.open_safe()
 # print(ghost.menu)
-player.dialogue(ghost)
+# player.dialogue(ghost)
 # player.dialogue(martin)
 
 # print('Welcome, adventurer!')
