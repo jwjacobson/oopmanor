@@ -106,11 +106,11 @@ def create_doors(room):
     #         print(stair)
 
 """Here is where we create the doors."""
-print('Creating doors...')
+# print('Creating doors...')
 for room in room_instances:
     if room_instances[room].name in all_doors:
         create_doors(room_instances[room])
-print('Door creation complete.')
+# print('Door creation complete.')
 
 # Step 3: create the items
 # The all_items dictionary contains all the data necessary for item generation
@@ -325,11 +325,11 @@ def create_items(room):
         # print('No items were created.')
 
 # Create the items
-print('Creating items...')
+# print('Creating items...')
 for room in room_instances:
     if room_instances[room].name in all_items:
         create_items(room_instances[room])
-print('Item creation complete.')
+# print('Item creation complete.')
 
 
 # Establish simple references for each item instance
@@ -347,14 +347,15 @@ ghost = item_instances['ghost']
 
 ghost.populate_hints()
 
-for item_name in item_instances:
-    print(item_instances[item_name])
+# for item_name in item_instances:
+    # print(item_instances[item_name])
 
 # martin = Thou('Martin', 'A bearded philosopher.', 'A bearded philosopher, inventor of the concept of this class.', outside, 'in the ether', {'1': 'Who are you?'})
 
 player = Player('ababu', location=foyer)
 # player.open_safe()
 # print(ghost.menu)
+# print(ghost.poems)
 player.dialogue(ghost)
 # player.dialogue(martin)
 

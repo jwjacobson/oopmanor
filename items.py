@@ -1,3 +1,5 @@
+import os
+
 class Item:
     """Items are general-purpose objects; they are the things in Rooms the Player can interact with.
     They can be taken, dropped, moved to other rooms, and examined for information.
@@ -25,13 +27,7 @@ class Item:
         print(f'The {self.name} crumbles to bits!')
         del self
 
-    def populate_hints(self):
-        """This function takes hints from a separate file and stores them in a set for use by the Hint Ghost."""
-        self.hints = set()
-        with open("./hints.txt") as hints:
-            Hints = hints.readlines()
-            for hint in Hints:
-                self.hints.add(hint.strip())
+    
 
 
 class Concealer(Item):
@@ -70,22 +66,60 @@ class Catalyst(Item):
 class Thou(Item):
     """A Thou is an item with which the player can enter into dialogue.
     (see https://plato.stanford.edu/entries/buber/#DiaITho)."""
-    def __init__(self, name, blurb, description, location, position, menu, hidden=False, takeable=False, failure_message='', reveal_message=''):
+    def __init__(self, name, blurb, description, location, position, menu, hidden=False, takeable=False, failure_message='', reveal_message='', titles=None, poems=None):
         super().__init__(name, blurb, description, location, position, takeable, failure_message, reveal_message)
         self.menu = menu        # The menu holds the Thou's dialogue options
+        import poem_data
+        self.poems = poem_data.poems
+        self.titles = poem_data.titles
+
+    def populate_hints(self):
+        """This function takes hints from a separate file and stores them in a set for use by the Hint Ghost."""
+        self.hints = set()
+        with open("./testhints.txt") as hints:
+            Hints = hints.readlines()
+            for hint in Hints:
+                self.hints.add(hint.strip())
+
+    def give_hint(self, player):
+        """This method gives a hint"""
+        print('\n')
+        print(self.hints.pop())
+
+    def recite(self, poem):
+        print('The Hint Ghost begins to recite.')
+        if os.name == 'posix':
+            os.system('clear')
+        print('')
+        for line in poem:
+            print(line)
+        print('')
 
     def respond(self, player):
-        """This function allows a Thou to respond to the initiation of dialogue by the Player."""
-        print(f"Dialogue initiated between {player.name} and {self.name}!")
+        """This function allows a Thou to respond to the initiation of dialogue by the Player.
+        Currently it's tailored to the Hint Ghost, the only Thou. If I add another I'll generalize."""
+        print(f"You address the {self.name}.")
+        total_hints = len(self.hints)
         while True:
-            print('\nAvailable options:\n')
+            hints_left = len(self.hints)
+            hints_heard = total_hints - hints_left
+            print('\nAvailable options:')
             for num, qa in self.menu.items():
                 print(f'({num}). {qa[0]}')
+            print(f'\n(You\'ve heard {hints_heard} of {total_hints} hints)')
             prompt = input('\nWhat would you like to say? ')
             while prompt not in self.menu.keys():
                 prompt = input('Choose one of the options above. ' )
             print(f'\n{self.menu[prompt][0]}')
             print(self.menu[prompt][1])
-            if prompt == '3':
+            if prompt == '2':
+                self.give_hint(player)
+                if hints_left == 1:
+                    print('\nYou\'ve heard all my hints!')
+                    print('\nYou now have the option to hear me recite poetry!')
+                    self.menu['4'] = ('I want to hear a poem.', 'Very well.')
+            elif prompt == '3':
                 break
+            elif prompt == '4':
+                self.recite(self.poems[self.titles.pop()])
                 
