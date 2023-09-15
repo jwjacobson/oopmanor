@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from items import *
 from doors import *
 from rooms import *

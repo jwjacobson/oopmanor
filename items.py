@@ -1,4 +1,5 @@
 import os
+import timings
 
 class Item:
     """Items are general-purpose objects; they are the things in Rooms the Player can interact with.
@@ -87,7 +88,8 @@ class Thou(Item):
         print(self.hints.pop())
 
     def recite(self, poem):
-        print('The Hint Ghost begins to recite...')
+        print('\nThe Hint Ghost begins to recite...')
+        timings.rest(3)
         if os.name == 'posix':
             os.system('clear')
         # this should clear the screen on windows systems
@@ -95,8 +97,9 @@ class Thou(Item):
             os.system('cls')
         print('')
         for line in poem:
-            print(line)
+            timings.sprint(line)
         print('')
+        timings.rest(4)
 
     def respond(self, player):
         """This function allows a Thou to respond to the initiation of dialogue by the Player.
