@@ -1,3 +1,7 @@
+"""
+This module contains poems to be read by the Hint Ghost using the recite function
+"""
+
 titles = {'tea', 'merchant'}
 
 poems = {

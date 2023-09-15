@@ -87,9 +87,12 @@ class Thou(Item):
         print(self.hints.pop())
 
     def recite(self, poem):
-        print('The Hint Ghost begins to recite.')
+        print('The Hint Ghost begins to recite...')
         if os.name == 'posix':
             os.system('clear')
+        # this should clear the screen on windows systems
+        elif os.name == 'nt':
+            os.system('cls')
         print('')
         for line in poem:
             print(line)
